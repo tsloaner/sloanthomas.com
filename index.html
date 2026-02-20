@@ -120,6 +120,26 @@
             letter-spacing: 0.01em;
         }
 
+        .reading-time {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
+            letter-spacing: 0.01em;
+        }
+
+        /* --- Reading Progress Bar --- */
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background-color: var(--accent-blue);
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
         blockquote {
             font-style: italic;
             border-left: 3px solid var(--accent-blue);
@@ -318,11 +338,13 @@
     </style>
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
 
     <div class="container">
         <header class="fade-section">
             <h1>Data Is Killing Your Marketing</h1>
             <div class="byline">Thomas Sloan | Human-centered marketing strategist</div>
+            <div class="reading-time">Estimated reading time: 8 minutes</div>
         </header>
 
         <main>
@@ -572,6 +594,15 @@
             const sections = document.querySelectorAll('.fade-section');
             sections.forEach(section => {
                 observer.observe(section);
+            });
+
+            // Reading progress bar
+            const progressBar = document.getElementById('progressBar');
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (scrollTop / docHeight) * 100;
+                progressBar.style.width = progress + '%';
             });
         });
     </script>
