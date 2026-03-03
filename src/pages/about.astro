@@ -39,6 +39,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   body.about-page section[id] {
     scroll-snap-align: start;
   }
+  .section-nav-link.text-orange {
+    font-weight: 600;
+  }
 </style>
 
 <script>
@@ -63,7 +66,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           }
         });
       },
-      { threshold: 0.5 }
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
     );
 
     sections.forEach(s => observer.observe(s));
