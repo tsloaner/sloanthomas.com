@@ -1,0 +1,12 @@
+---
+interface Props {
+  delay?: 0 | 100 | 200 | 300 | 400 | 500 | 600 | 700;
+  class?: string;
+}
+
+const { delay = 0, class: className = '' } = Astro.props;
+---
+
+<div class={`scroll-fade-in ${className}`} data-delay={delay}>
+  <slot />
+</div>

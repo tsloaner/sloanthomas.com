@@ -418,7 +418,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="grid grid-cols-2 gap-2 sm:gap-3 max-w-[640px] mx-auto">
 
         <!-- Slot 1: Mountains / hiking -->
-        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="200">
+        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="200" aria-label="Photo placeholder: Mountains / hiking">
           <!-- PHOTO: Mountains / hiking -->
           <svg class="w-8 h-8 text-slate-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 3l4 8 3-4 4 8H3l2-4zm14 9l-3-6-4 8" />
@@ -426,7 +426,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <!-- Slot 2: Snowboarding or cycling -->
-        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="300">
+        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="300" aria-label="Photo placeholder: Snowboarding or cycling">
           <!-- PHOTO: Snowboarding or cycling -->
           <svg class="w-8 h-8 text-slate-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10" stroke-width="1" />
@@ -435,7 +435,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <!-- Slot 3: Band performance (ROUNDTREE) -->
-        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="400">
+        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="400" aria-label="Photo placeholder: Band performance (ROUNDTREE)">
           <!-- PHOTO: Band performance (ROUNDTREE) -->
           <svg class="w-8 h-8 text-slate-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
@@ -443,7 +443,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <!-- Slot 4: Gym or cooking -->
-        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="500">
+        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="500" aria-label="Photo placeholder: Gym or cooking">
           <!-- PHOTO: Gym or cooking -->
           <svg class="w-8 h-8 text-slate-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -499,25 +499,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   body.about-page section[id] {
     scroll-snap-align: start;
   }
-  .section-nav-link.text-orange {
+  body.about-page .section-nav-link.text-orange {
     font-weight: 600;
   }
 
   /* Timeline detail — desktop always visible, mobile collapsible */
-  .timeline-detail {
+  body.about-page .timeline-detail {
     overflow: hidden;
   }
 
   @media (max-width: 1023px) {
-    .timeline-detail {
+    body.about-page .timeline-detail {
       display: grid;
       grid-template-rows: 0fr;
       transition: grid-template-rows 300ms ease-in-out;
     }
-    .timeline-detail > p {
+    body.about-page .timeline-detail > p {
       overflow: hidden;
     }
-    .timeline-detail.is-open {
+    body.about-page .timeline-detail.is-open {
       grid-template-rows: 1fr;
     }
   }
