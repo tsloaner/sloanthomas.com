@@ -198,6 +198,201 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  <!-- Section 4: Journey -->
+  <section
+    id="journey"
+    class="min-h-[100dvh] bg-linen flex items-start px-6 py-24"
+  >
+    <div class="max-w-[900px] w-full mx-auto">
+
+      <h2 class="scroll-fade-in font-display font-bold text-indigo mb-16">
+        How I Got Here
+      </h2>
+
+      <!-- Timeline -->
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-[11px] top-0 bottom-0 w-0.5 bg-slate-blue/25"></div>
+
+        <div class="space-y-10">
+
+          <!-- Entry 1 -->
+          <div class="scroll-fade-in relative pl-10" data-delay="100">
+            <div class="absolute left-0 top-1.5 w-[22px] h-[22px] rounded-full bg-orange border-4 border-linen shadow-sm"></div>
+            <div>
+              <h3 class="font-display font-bold text-indigo text-[1.125rem] leading-snug">
+                Started with the big questions
+              </h3>
+              <p class="font-mono text-[11px] uppercase tracking-widest text-slate-blue/70 mt-0.5 mb-2">
+                Wake Forest — Philosophy &amp; Political Science
+              </p>
+              <div class="timeline-detail" id="detail-1">
+                <p class="font-body text-slate-blue text-[1.0rem] leading-relaxed max-w-[60ch]">
+                  I was always drawn to the big, messy questions that mattered. How people think and act, how and why certain systems work better than others.
+                </p>
+              </div>
+              <button
+                class="timeline-toggle lg:hidden mt-2 flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+                aria-expanded="false"
+                aria-controls="detail-1"
+                data-target="detail-1"
+              >
+                <span class="toggle-label">More</span>
+                <svg class="toggle-icon w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 2 -->
+          <div class="scroll-fade-in relative pl-10" data-delay="200">
+            <div class="absolute left-0 top-1.5 w-[22px] h-[22px] rounded-full bg-orange border-4 border-linen shadow-sm"></div>
+            <div>
+              <h3 class="font-display font-bold text-indigo text-[1.125rem] leading-snug">
+                Explored before specializing
+              </h3>
+              <p class="font-mono text-[11px] uppercase tracking-widest text-slate-blue/70 mt-0.5 mb-2">
+                Topanga Partners → UpContent
+              </p>
+              <div class="timeline-detail" id="detail-2">
+                <p class="font-body text-slate-blue text-[1.0rem] leading-relaxed max-w-[60ch]">
+                  Private equity gave me exposure to various startups. That led to UpContent, a marketing SaaS startup. Energized by the small team, hands-on work, and thinking deeply about customer journeys.
+                </p>
+              </div>
+              <button
+                class="timeline-toggle lg:hidden mt-2 flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+                aria-expanded="false"
+                aria-controls="detail-2"
+                data-target="detail-2"
+              >
+                <span class="toggle-label">More</span>
+                <svg class="toggle-icon w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 3 -->
+          <div class="scroll-fade-in relative pl-10" data-delay="300">
+            <div class="absolute left-0 top-1.5 w-[22px] h-[22px] rounded-full bg-orange border-4 border-linen shadow-sm"></div>
+            <div>
+              <h3 class="font-display font-bold text-indigo text-[1.125rem] leading-snug">
+                Found marketing through the side door
+              </h3>
+              <p class="font-mono text-[11px] uppercase tracking-widest text-slate-blue/70 mt-0.5 mb-2">
+                Techstars
+              </p>
+              <div class="timeline-detail" id="detail-3">
+                <p class="font-body text-slate-blue text-[1.0rem] leading-relaxed max-w-[60ch]">
+                  Customer Success made me realize I didn't care about support. It was understanding why people engaged or didn't, and designing better systems around that.
+                </p>
+              </div>
+              <button
+                class="timeline-toggle lg:hidden mt-2 flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+                aria-expanded="false"
+                aria-controls="detail-3"
+                data-target="detail-3"
+              >
+                <span class="toggle-label">More</span>
+                <svg class="toggle-icon w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 4 -->
+          <div class="scroll-fade-in relative pl-10" data-delay="400">
+            <div class="absolute left-0 top-1.5 w-[22px] h-[22px] rounded-full bg-orange border-4 border-linen shadow-sm"></div>
+            <div>
+              <h3 class="font-display font-bold text-indigo text-[1.125rem] leading-snug">
+                Got serious about the craft
+              </h3>
+              <p class="font-mono text-[11px] uppercase tracking-widest text-slate-blue/70 mt-0.5 mb-2">
+                MS Marketing — University of Denver
+              </p>
+              <div class="timeline-detail" id="detail-4">
+                <p class="font-body text-slate-blue text-[1.0rem] leading-relaxed max-w-[60ch]">
+                  One year of intensive study. Consumed more and more behavioral science and consumer behavior research. Formalized what experience had been teaching me.
+                </p>
+              </div>
+              <button
+                class="timeline-toggle lg:hidden mt-2 flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+                aria-expanded="false"
+                aria-controls="detail-4"
+                data-target="detail-4"
+              >
+                <span class="toggle-label">More</span>
+                <svg class="toggle-icon w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 5 -->
+          <div class="scroll-fade-in relative pl-10" data-delay="500">
+            <div class="absolute left-0 top-1.5 w-[22px] h-[22px] rounded-full bg-orange border-4 border-linen shadow-sm"></div>
+            <div>
+              <h3 class="font-display font-bold text-indigo text-[1.125rem] leading-snug">
+                Tested it in the real world
+              </h3>
+              <p class="font-mono text-[11px] uppercase tracking-widest text-slate-blue/70 mt-0.5 mb-2">
+                CU Boulder
+              </p>
+              <div class="timeline-detail" id="detail-5">
+                <p class="font-body text-slate-blue text-[1.0rem] leading-relaxed max-w-[60ch]">
+                  Managed email campaigns to 200K+ alumni, 44% open rate. Complex stakeholder environment. Learned what works — and more about how organizational friction kills good marketing.
+                </p>
+              </div>
+              <button
+                class="timeline-toggle lg:hidden mt-2 flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+                aria-expanded="false"
+                aria-controls="detail-5"
+                data-target="detail-5"
+              >
+                <span class="toggle-label">More</span>
+                <svg class="toggle-icon w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 6 -->
+          <div class="scroll-fade-in relative pl-10" data-delay="600">
+            <div class="absolute left-0 top-1.5 w-[22px] h-[22px] rounded-full bg-orange border-4 border-linen shadow-sm"></div>
+            <div>
+              <h3 class="font-display font-bold text-indigo text-[1.125rem] leading-snug">
+                Went independent
+              </h3>
+              <div class="timeline-detail" id="detail-6">
+                <p class="font-body text-slate-blue text-[1.0rem] leading-relaxed max-w-[60ch]">
+                  Being on the outside lets me evaluate with fresh eyes and without the worry of upsetting a manager I have to work with indefinitely. I kept seeing the same problems — good marketing killed by bad process, misguided optimization, and a lack of understanding of human nature. Now I fix them.
+                </p>
+              </div>
+              <button
+                class="timeline-toggle lg:hidden mt-2 flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+                aria-expanded="false"
+                aria-controls="detail-6"
+                data-target="detail-6"
+              >
+                <span class="toggle-label">More</span>
+                <svg class="toggle-icon w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
 </BaseLayout>
 
 <style is:global>
@@ -211,6 +406,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .section-nav-link.text-orange {
     font-weight: 600;
+  }
+
+  /* Timeline detail — desktop always visible, mobile collapsible */
+  .timeline-detail {
+    overflow: hidden;
+  }
+
+  @media (max-width: 1023px) {
+    .timeline-detail {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 300ms ease-in-out;
+    }
+    .timeline-detail > p {
+      overflow: hidden;
+    }
+    .timeline-detail.is-open {
+      grid-template-rows: 1fr;
+    }
   }
 </style>
 
@@ -242,9 +456,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     sections.forEach(s => observer.observe(s));
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSectionNav);
-  } else {
+  function initTimeline() {
+    const toggles = document.querySelectorAll<HTMLButtonElement>('.timeline-toggle');
+    toggles.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target!;
+        const detail = document.getElementById(targetId);
+        const label = btn.querySelector('.toggle-label');
+        const icon = btn.querySelector<SVGElement>('.toggle-icon');
+        if (!detail) return;
+
+        const isOpen = detail.classList.contains('is-open');
+        detail.classList.toggle('is-open', !isOpen);
+        btn.setAttribute('aria-expanded', (!isOpen).toString());
+        if (label) label.textContent = isOpen ? 'More' : 'Less';
+        if (icon) icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+      });
+    });
+  }
+
+  function initAll() {
     initSectionNav();
+    initTimeline();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
   }
 </script>
