@@ -3,7 +3,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About — Thomas Sloan" description="Marketing strategist, behavioral science practitioner, Boulder CO.">
-  <!-- Section Nav injected in Task 2 -->
+  <!-- Sticky Section Nav -->
+  <nav
+    aria-label="Page sections"
+    id="section-nav"
+    class="fixed z-40 hidden lg:flex flex-col gap-4 right-6 top-1/2 -translate-y-1/2"
+  >
+    {[
+      { label: 'Story',    href: '#story'    },
+      { label: 'Spark',    href: '#spark'    },
+      { label: 'Beliefs',  href: '#beliefs'  },
+      { label: 'Journey',  href: '#journey'  },
+      { label: 'Life',     href: '#life'     },
+      { label: 'Contact',  href: '#contact'  },
+    ].map(({ label, href }) => (
+      <a
+        href={href}
+        data-section={href.slice(1)}
+        class="section-nav-link font-mono text-[11px] uppercase tracking-widest text-slate-blue hover:text-orange transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+      >
+        {label}
+      </a>
+    ))}
+  </nav>
 
   <!-- Sections injected in Tasks 3–8 -->
 </BaseLayout>
@@ -21,4 +43,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <script>
   document.body.classList.add('about-page');
+
+  function initSectionNav() {
+    const links = document.querySelectorAll<HTMLAnchorElement>('.section-nav-link');
+    const sections = Array.from(links).map(l =>
+      document.getElementById(l.dataset.section!)
+    ).filter(Boolean) as HTMLElement[];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach(l => {
+              const active = l.dataset.section === id;
+              l.classList.toggle('text-orange', active);
+              l.classList.toggle('text-slate-blue', !active);
+            });
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach(s => observer.observe(s));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSectionNav);
+  } else {
+    initSectionNav();
+  }
 </script>
