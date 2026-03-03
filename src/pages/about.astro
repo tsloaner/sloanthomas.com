@@ -393,6 +393,67 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     </div>
   </section>
+
+  <!-- Section 5: Life -->
+  <section
+    id="life"
+    class="min-h-[100dvh] bg-linen flex items-center px-6 py-24"
+  >
+    <div class="max-w-[900px] w-full mx-auto text-center">
+
+      <h2 class="scroll-fade-in font-display font-bold text-indigo mb-8">
+        Outside Work
+      </h2>
+
+      <p class="scroll-fade-in font-body text-slate-blue text-[1.0625rem] leading-relaxed max-w-[60ch] mx-auto mb-16" data-delay="100">
+        Based in Boulder, CO with my partner and our dog. In my free time you can find me playing in the mountains on my feet, bike, or snowboard, making music with <a
+          href="https://instagram.com/roundtreemusic"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-orange underline decoration-transparent hover:decoration-orange underline-offset-4 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+        >ROUNDTREE</a>, or lifting things at the gym or out of the oven.
+      </p>
+
+      <!-- 2×2 Photo grid -->
+      <div class="grid grid-cols-2 gap-2 sm:gap-3 max-w-[640px] mx-auto">
+
+        <!-- Slot 1: Mountains / hiking -->
+        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="200">
+          <!-- PHOTO: Mountains / hiking -->
+          <svg class="w-8 h-8 text-slate-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 3l4 8 3-4 4 8H3l2-4zm14 9l-3-6-4 8" />
+          </svg>
+        </div>
+
+        <!-- Slot 2: Snowboarding or cycling -->
+        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="300">
+          <!-- PHOTO: Snowboarding or cycling -->
+          <svg class="w-8 h-8 text-slate-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke-width="1" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 2v20M2 12h20" />
+          </svg>
+        </div>
+
+        <!-- Slot 3: Band performance (ROUNDTREE) -->
+        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="400">
+          <!-- PHOTO: Band performance (ROUNDTREE) -->
+          <svg class="w-8 h-8 text-slate-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+          </svg>
+        </div>
+
+        <!-- Slot 4: Gym or cooking -->
+        <div class="scroll-fade-in aspect-[3/2] rounded-[4px] border border-slate-blue/15 bg-slate-blue/5 flex items-center justify-center" data-delay="500">
+          <!-- PHOTO: Gym or cooking -->
+          <svg class="w-8 h-8 text-slate-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 </BaseLayout>
 
 <style is:global>
