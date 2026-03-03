@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About — Thomas Sloan" description="Marketing strategist, behavioral science practitioner, Boulder CO.">
+  <!-- Section Nav injected in Task 2 -->
+
+  <!-- Sections injected in Tasks 3–8 -->
+</BaseLayout>
+
+<style is:global>
+  /* Scroll snap — scoped to about page only via body class */
+  body.about-page {
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 7rem;
+  }
+  body.about-page section[id] {
+    scroll-snap-align: start;
+  }
+</style>
+
+<script>
+  document.body.classList.add('about-page');
+</script>
