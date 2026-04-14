@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-indigo: #142E52;
-  --color-linen: #E6E5DB;
-  --color-slate-blue: #5A6572;
-  --color-orange: #F28F2C;
+  --color-indigo: oklch(0.301 0.073 257.068);
+  --color-linen: oklch(0.919 0.017 103.164);
+  --color-slate-blue: oklch(0.502 0.025 252.663);
+  --color-orange: oklch(0.74 0.159 59.816);
 
   --font-display: 'Fraunces', 'Georgia', serif;
   --font-body: 'DM Sans', 'system-ui', sans-serif;

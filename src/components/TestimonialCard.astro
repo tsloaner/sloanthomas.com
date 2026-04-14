@@ -1,0 +1,28 @@
+---
+import ScrollFadeIn from './ScrollFadeIn.astro';
+
+interface Props {
+  quote: string;
+  name: string;
+  title: string;
+  delay?: 0 | 100 | 200 | 300 | 400;
+}
+
+const { quote, name, title, delay = 0 } = Astro.props;
+---
+
+<ScrollFadeIn delay={delay} class="h-full">
+  <div class="h-full flex flex-col pl-6 pr-4 py-4 border-l-2 border-orange/40">
+    <blockquote class="font-body italic text-[17px] text-slate-blue leading-relaxed mb-6 flex-grow">
+      "{quote}"
+    </blockquote>
+    <div>
+      <p class="font-body font-semibold text-[15px] text-indigo mb-[2px]">
+        {name}
+      </p>
+      <p class="font-body text-[14px] text-slate-blue/80">
+        {title}
+      </p>
+    </div>
+  </div>
+</ScrollFadeIn>

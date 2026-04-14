@@ -1,0 +1,194 @@
+---
+import ScrollFadeIn from "./ScrollFadeIn.astro";
+import DashboardSvg from "./svg/DashboardSvg.astro";
+import BeSciSvg from "./svg/BeSciSvg.astro";
+import PrismSvg from "./svg/PrismSvg.astro";
+import BrandSvg from "./svg/BrandSvg.astro";
+
+interface Props {
+  headline: string;
+  thesis: string;
+  detail: string;
+  animationLabel: string;
+  svgId: string;
+  delay?: 0 | 100 | 200 | 300 | 400;
+}
+
+const {
+  headline,
+  thesis,
+  detail,
+  animationLabel,
+  svgId,
+  delay = 0,
+} = Astro.props;
+// Generate unique ID for accessibility coupling
+const uniqueId = Math.random().toString(36).substr(2, 9);
+const contentId = `card-content-${uniqueId}`;
+---
+
+<style>
+  /* Base state for paused SVGs */
+  .svg-container.is-paused {
+    opacity: 0.6;
+    filter: grayscale(100%);
+  }
+  .svg-container {
+    transition: opacity 0.5s ease, filter 0.5s ease;
+  }
+
+  /* Pause any CSS-based animations on children inside a paused container */
+  .svg-container.is-paused :global(*) {
+    animation-play-state: paused !important;
+  }
+</style>
+
+<ScrollFadeIn delay={delay} class="h-full">
+  <div
+    class="philosophy-card h-full flex flex-col bg-linen/60 ring-1 ring-inset ring-slate-blue/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] rounded-lg p-6 hover:shadow-[0_4px_24px_-4px_rgba(20,46,82,0.05),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300"
+  >
+    <!-- Revealing SVG Header -->
+    <div
+      class="svg-container is-paused w-full h-[180px] mb-6 rounded-md overflow-hidden bg-linen border border-slate-blue/10"
+    >
+      {svgId === "dashboard" && <DashboardSvg />}
+      {svgId === "funnel" && <FunnelSvg />}
+      {svgId === "besci" && <BeSciSvg />}
+      {svgId === "prism" && <PrismSvg />}
+      {svgId === "brand" && <BrandSvg />}
+    </div>
+
+    <h3 class="text-indigo font-display font-semibold text-[22px] mb-4">
+      {headline}
+    </h3>
+
+    <!-- Expand Section -->
+    <div class="mt-auto pt-2 border-t border-slate-blue/10">
+      <button
+        class="expand-trigger group flex items-center gap-2 font-mono text-[13px] text-slate-blue tracking-wider uppercase transition-colors hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm w-full text-left"
+        aria-expanded="false"
+        aria-controls={contentId}
+      >
+        <span
+          class="icon-plus transition-transform duration-300 transform align-middle inline-flex items-center justify-center text-lg leading-none"
+          >+</span
+        >
+        <span
+          class="icon-minus hidden transition-transform duration-300 transform align-middle items-center justify-center text-lg leading-none"
+          >−</span
+        >
+        <span class="btn-text">Read more</span>
+      </button>
+
+      <div
+        id={contentId}
+        class="expand-content grid transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] grid-rows-[0fr] opacity-0"
+      >
+        <div class="overflow-hidden min-h-0">
+          <div class="pt-4 flex flex-col gap-3">
+            <p
+              class="text-slate-blue font-body font-bold text-[17px] leading-relaxed"
+            >
+              {thesis}
+            </p>
+            <p class="text-slate-blue/90 font-body font-bold text-base leading-relaxed">
+              {detail}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ScrollFadeIn>
+
+<script>
+  function setupCards() {
+    const cards = document.querySelectorAll(".philosophy-card");
+
+    cards.forEach((card) => {
+      // 1. Expand/Collapse Logic
+      const trigger = card.querySelector(".expand-trigger");
+      const content = card.querySelector(".expand-content");
+      const btnText = card.querySelector(".btn-text");
+      const iconPlus = card.querySelector(".icon-plus");
+      const iconMinus = card.querySelector(".icon-minus");
+
+      // 2. SVG Hover Logic (Pauses SMIL animations specifically)
+      const svgContainer = card.querySelector(".svg-container");
+      const svgMap = svgContainer ? svgContainer.querySelector("svg") : null;
+
+      // Detect touch-primary devices (no hover capability)
+      const isTouch = window.matchMedia("(hover: none)").matches;
+
+      if (isTouch) {
+        // Touch devices: let animations loop freely, no grayscale
+        if (svgContainer) svgContainer.classList.remove("is-paused");
+      } else {
+        // Hover devices: pause on load, unpause on hover
+        if (svgMap && typeof svgMap.pauseAnimations === "function") {
+          // Tiny timeout to ensure browsers render the first frame before pausing
+          setTimeout(() => svgMap.pauseAnimations(), 50);
+        }
+
+        // We only bind hover events if we haven't already
+        if (svgContainer && !card.hasAttribute("data-hover-bound")) {
+          card.setAttribute("data-hover-bound", "true");
+
+          card.addEventListener("mouseenter", () => {
+            svgContainer.classList.remove("is-paused");
+            if (svgMap && typeof svgMap.unpauseAnimations === "function") {
+              svgMap.unpauseAnimations();
+            }
+          });
+
+          card.addEventListener("mouseleave", () => {
+            svgContainer.classList.add("is-paused");
+            if (svgMap && typeof svgMap.pauseAnimations === "function") {
+              svgMap.pauseAnimations();
+            }
+          });
+        }
+      }
+
+      if (!trigger || !content || !btnText || !iconPlus || !iconMinus) return;
+
+      // Ensure we don't bind multiple times
+      if (card.hasAttribute("data-click-bound")) return;
+      card.setAttribute("data-click-bound", "true");
+
+      trigger.addEventListener("click", () => {
+        const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+
+        // Toggle ARIA
+        trigger.setAttribute("aria-expanded", (!isExpanded).toString());
+
+        if (!isExpanded) {
+          // Open
+          content.classList.remove("grid-rows-[0fr]", "opacity-0");
+          content.classList.add("grid-rows-[1fr]", "opacity-100");
+          btnText.textContent = "Close";
+          iconPlus.classList.add("hidden");
+          iconPlus.classList.remove("inline-flex");
+          iconMinus.classList.remove("hidden");
+          iconMinus.classList.add("inline-flex");
+        } else {
+          // Close
+          content.classList.remove("grid-rows-[1fr]", "opacity-100");
+          content.classList.add("grid-rows-[0fr]", "opacity-0");
+          btnText.textContent = "Read more";
+          iconMinus.classList.add("hidden");
+          iconMinus.classList.remove("inline-flex");
+          iconPlus.classList.remove("hidden");
+          iconPlus.classList.add("inline-flex");
+        }
+      });
+    });
+  }
+
+  // Bind events
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupCards);
+  } else {
+    setupCards();
+  }
+</script>

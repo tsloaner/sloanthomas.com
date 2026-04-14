@@ -1,0 +1,71 @@
+---
+import PhilosophyCard from "./PhilosophyCard.astro";
+
+const cards = [
+  {
+    headline: "Your dashboard is lying to you",
+    thesis:
+      "Over-reliance on measurement misses crucial information, and leads to inaccurate, ineffective marketing.",
+    detail:
+      "I find what your data doesn't.",
+    animationLabel: "data · dashboard",
+    svgId: "dashboard",
+    delay: 0 as const,
+  },
+  {
+    headline: "Brands are built slowly but broken quickly",
+    thesis: "Marketing is a long-term gamble made in public. Courage and patience are required for long-term growth.",
+    detail:
+      "Short-term tactics kill it. I identify and fix the system.",
+    animationLabel: "push · pull",
+    svgId: "brand",
+    delay: 100 as const,
+  },
+  {
+    headline: "Work with human nature, not against it",
+    thesis:
+      "Attention, trust, and memory follow patterns that behavioral science has mapped for decades.",
+    detail:
+      "I use those patterns to design customer journeys that convert — by removing friction.",
+    animationLabel: "behavior · patterns",
+    svgId: "besci",
+    delay: 200 as const,
+  },
+  {
+    headline: "Strategy is about focus",
+    thesis:
+      "Underperformance is an avoidance problem. Strategy is the uncomfortable work of deciding what matters most, and committing to it.",
+    detail:
+      "Most teams avoid it — I help you get it right.",
+    animationLabel: "focus · signal",
+    svgId: "prism",
+    delay: 300 as const,
+  },
+];
+---
+
+<section id="philosophy" class="py-24 px-6 relative">
+  <div
+    class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start"
+  >
+    <!-- Section Label -->
+    <div class="lg:col-span-4 lg:sticky lg:top-32">
+      <h2
+        class="font-mono text-[13px] uppercase tracking-[0.05em] text-slate-blue opacity-80 mb-4"
+      >
+        How I Think
+      </h2>
+      <p class="font-body text-[16px] text-slate-blue max-w-[30ch]">
+        I’ve developed a unique approach to effective marketing through
+        experience and education
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div
+      class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+    >
+      {cards.map((card) => <PhilosophyCard {...card} />)}
+    </div>
+  </div>
+</section>

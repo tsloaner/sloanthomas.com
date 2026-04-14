@@ -1,0 +1,103 @@
+---
+---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <style>
+      /* --- CORE STYLES --- */
+      .baseline {
+        stroke: #5a6572;
+        stroke-width: 4;
+        stroke-linecap: round;
+      }
+      .bar {
+        fill: #142e52;
+      }
+      .synapse-path {
+        fill: none;
+        stroke: #f28f2c;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .synapse-node {
+        fill: #f28f2c;
+      }
+      .scanner-line {
+        stroke: #f28f2c;
+        stroke-width: 4;
+        stroke-linecap: round;
+        animation: scanMove 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      /* --- ANIMATIONS --- */
+      .clip-rect {
+        animation: maskReveal 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+      .synapse-group {
+        animation: fadeOutSynapse 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      @keyframes scanMove {
+        0%, 5% { transform: translateY(0); opacity: 0; }
+        15%, 25% { transform: translateY(0); opacity: 1; }
+        75% { transform: translateY(80px); opacity: 1; }
+        85%, 100% { transform: translateY(80px); opacity: 0; }
+      }
+
+      @keyframes maskReveal {
+        0%, 25% { height: 0px; }
+        75%, 85% { height: 80px; }
+        86%, 100% { height: 0px; }
+      }
+
+      @keyframes fadeOutSynapse {
+        0%, 75% { opacity: 1; }
+        85%, 100% { opacity: 0; }
+      }
+    </style>
+
+    <clipPath id="synapse-clip">
+      <rect x="0" y="100" width="200" height="0" class="clip-rect" />
+    </clipPath>
+  </defs>
+
+  <rect width="200" height="200" fill="#e6e5db" rx="20" />
+
+  <g class="dashboard-group">
+    <path class="bar" d="M 48 98 v -39 a 4 4 0 0 1 4 -4 h 16 a 4 4 0 0 1 4 4 v 39 z" />
+    <path class="bar" d="M 88 98 v -59 a 4 4 0 0 1 4 -4 h 16 a 4 4 0 0 1 4 4 v 59 z" />
+    <path class="bar" d="M 128 98 v -29 a 4 4 0 0 1 4 -4 h 16 a 4 4 0 0 1 4 4 v 29 z" />
+  </g>
+
+  <line x1="20" y1="100" x2="180" y2="100" class="baseline" />
+
+  <g class="synapse-group" clip-path="url(#synapse-clip)">
+    <path class="synapse-path" d="
+      M 56 100 C 56 115, 40 115, 40 130
+      M 40 130 C 40 145, 50 150, 50 165
+      M 40 130 C 60 135, 75 135, 75 150
+      
+      M 96 100 C 96 110, 85 115, 85 125
+      M 85 125 C 85 140, 75 140, 75 150
+      M 75 150 C 75 160, 95 160, 95 170
+      
+      M 136 100 C 136 115, 145 120, 145 135
+      M 145 135 C 145 150, 125 145, 125 160
+      M 145 135 C 155 145, 160 155, 160 165
+
+      M 85 125 C 105 130, 125 145, 125 160
+    " />
+    
+    <circle cx="40" cy="130" r="3.5" class="synapse-node" />
+    <circle cx="50" cy="165" r="3.5" class="synapse-node" />
+    <circle cx="75" cy="150" r="3.5" class="synapse-node" />
+    <circle cx="85" cy="125" r="3.5" class="synapse-node" />
+    <circle cx="95" cy="170" r="3.5" class="synapse-node" />
+    <circle cx="145" cy="135" r="3.5" class="synapse-node" />
+    <circle cx="125" cy="160" r="3.5" class="synapse-node" />
+    <circle cx="160" cy="165" r="3.5" class="synapse-node" />
+  </g>
+
+  <line x1="20" y1="100" x2="180" y2="100" class="scanner-line" />
+
+</svg>

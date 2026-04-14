@@ -1,0 +1,143 @@
+---
+---
+
+<!-- Replace YOUR_FORMSPREE_ID with your actual Formspree form ID -->
+<form
+  action="https://formspree.io/f/xkoqwngn"
+  method="POST"
+  class="w-full max-w-[600px] flex flex-col gap-8"
+>
+  <input
+    type="hidden"
+    name="_subject"
+    value="New inquiry from sloanthomas.com"
+  />
+  <input
+    type="hidden"
+    name="_next"
+    value="https://sloanthomas.com/contact?success=true"
+  />
+
+  <div class="flex flex-col gap-2">
+    <label
+      for="name"
+      class="font-mono text-[13px] uppercase tracking-widest text-slate-blue/80"
+    >
+      Name
+    </label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      class="bg-linen/40 border border-slate-blue/25 rounded-md px-4 py-3 font-body text-base text-indigo placeholder:text-slate-blue/40 focus:outline-none focus:border-orange focus:ring-1 focus:ring-orange transition-all duration-300"
+    />
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label
+      for="email"
+      class="font-mono text-[13px] uppercase tracking-widest text-slate-blue/80"
+    >
+      Email
+    </label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      class="bg-linen/40 border border-slate-blue/25 rounded-md px-4 py-3 font-body text-base text-indigo placeholder:text-slate-blue/40 focus:outline-none focus:border-orange focus:ring-1 focus:ring-orange transition-all duration-300"
+    />
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label
+      for="company"
+      class="font-mono text-[13px] uppercase tracking-widest text-slate-blue/80"
+    >
+      Company <span
+        class="text-slate-blue/50 normal-case ml-1 tracking-normal font-sans text-xs"
+        >(optional)</span
+      >
+    </label>
+    <input
+      type="text"
+      id="company"
+      name="company"
+      class="bg-linen/40 border border-slate-blue/25 rounded-md px-4 py-3 font-body text-base text-indigo placeholder:text-slate-blue/40 focus:outline-none focus:border-orange focus:ring-1 focus:ring-orange transition-all duration-300"
+    />
+  </div>
+
+  <div class="flex flex-col gap-3">
+    <label
+      class="font-mono text-[13px] uppercase tracking-widest text-slate-blue/80"
+    >
+      What are you looking to explore? <span
+        class="text-slate-blue/50 normal-case ml-1 tracking-normal font-sans text-xs"
+        >(optional)</span
+      >
+    </label>
+    <div class="flex flex-wrap gap-3">
+      {
+        [
+          "The Diagnostic",
+          "Behavioral Architecture Sprint",
+          "Strategic Advisory",
+          "Not sure, let's talk",
+        ].map((service) => (
+          <label class="cursor-pointer">
+            <input
+              type="checkbox"
+              name="services"
+              value={service}
+              class="peer sr-only"
+            />
+            <div class="px-4 py-2 rounded-full border border-slate-blue/25 bg-linen/30 text-slate-blue font-body text-sm select-none transition-all duration-200 peer-checked:bg-indigo peer-checked:text-linen peer-checked:border-indigo hover:border-slate-blue/50 peer-focus-visible:ring-2 peer-focus-visible:ring-orange peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-linen">
+              {service}
+            </div>
+          </label>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label
+      for="message"
+      class="font-mono text-[13px] uppercase tracking-widest text-slate-blue/80"
+    >
+      What's your challenge?
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      class="bg-linen/40 border border-slate-blue/25 rounded-md px-4 py-3 font-body text-base text-indigo placeholder:text-slate-blue/40 focus:outline-none focus:border-orange focus:ring-1 focus:ring-orange transition-all duration-300 resize-y min-h-[120px]"
+    ></textarea>
+  </div>
+
+  <div class="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
+    <button
+      id="contact-submit-btn"
+      type="submit"
+      class="inline-block bg-orange text-indigo font-body font-semibold py-3 px-8 rounded-md transition-all duration-300 hover:bg-orange/90 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-orange/20 active:translate-y-0 active:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-linen focus-visible:ring-indigo disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none"
+    >
+      Send message
+    </button>
+    <a href="mailto:sloan.thomas.a@gmail.com" class="text-slate-blue/60 hover:text-orange transition-colors font-body text-[13px] md:text-sm">
+      Just email me
+    </a>
+  </div>
+</form>
+
+<script>
+  const form = document.querySelector('form[action*="formspree"]') as HTMLFormElement | null;
+  const btn = document.getElementById('contact-submit-btn') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', () => {
+    if (!btn) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+  });
+</script>

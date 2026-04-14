@@ -1,0 +1,28 @@
+---
+import ScrollFadeIn from './ScrollFadeIn.astro';
+---
+
+<section style="display: none;" class="bg-indigo text-linen py-32 px-6 flex flex-col items-center justify-center text-center">
+  <div class="max-w-[700px] w-full mx-auto">
+    <ScrollFadeIn delay={0}>
+      <h2 class="font-display font-bold text-4xl md:text-5xl text-linen mb-6">
+        Let's find your friction.
+      </h2>
+    </ScrollFadeIn>
+    
+    <ScrollFadeIn delay={100}>
+      <p class="font-body text-xl md:text-[22px] text-linen/80 mb-12">
+        Every engagement starts with a conversation.
+      </p>
+    </ScrollFadeIn>
+    
+    <ScrollFadeIn delay={200}>
+      <a 
+        href="/contact" 
+        class="use-magnetic inline-block bg-orange text-indigo font-body font-semibold py-3 px-8 rounded-md transition-all duration-300 hover:bg-orange/90 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-orange/10 active:translate-y-0 active:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo focus-visible:ring-orange"
+      >
+        Get in touch
+      </a>
+    </ScrollFadeIn>
+  </div>
+</section>

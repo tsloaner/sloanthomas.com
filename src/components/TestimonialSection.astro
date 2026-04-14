@@ -1,0 +1,41 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+import ScrollFadeIn from './ScrollFadeIn.astro';
+
+const testimonials = [
+  {
+    quote: "Thomas helped us see what our dashboards couldn't. Within two weeks, we identified three critical friction points in our onboarding flow that were costing us customers.",
+    name: "[Name]",
+    title: "[Title], [Company]",
+    delay: 0 as const,
+  },
+  {
+    quote: "What sets Thomas apart is his ability to explain why something isn't working — not just that it isn't. His recommendations were specific, prioritized, and immediately actionable.",
+    name: "[Name]",
+    title: "[Title], [Company]",
+    delay: 100 as const,
+  },
+  {
+    quote: "We'd been throwing budget at the wrong problems for months. Thomas cut through the noise and gave us a focused plan that actually moved the needle.",
+    name: "[Name]",
+    title: "[Title], [Company]",
+    delay: 200 as const,
+  }
+];
+---
+
+<section id="testimonials" class="py-24 px-6 relative bg-linen">
+  <div class="max-w-[1200px] w-full mx-auto">
+    <ScrollFadeIn delay={0}>
+      <h2 class="font-mono text-[13px] uppercase tracking-[0.05em] text-slate-blue opacity-80 mb-12">
+        What People Say
+      </h2>
+    </ScrollFadeIn>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+      {testimonials.map((test) => (
+        <TestimonialCard {...test} />
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+---
+---
+<section class="py-6 md:pt-[3vh] md:pb-[3vh] px-6 mt-2">
+  <div class="max-w-[1200px] w-full mx-auto flex flex-col items-start gap-5">
+    <p
+      class="font-mono text-[13px] uppercase tracking-widest text-slate-blue/60 opacity-0 animate-[fadeUp_600ms_cubic-bezier(0.25,0.46,0.45,0.94)_forwards]"
+    >
+      Thomas Sloan
+    </p>
+
+    <h1
+      class="text-[2rem] md:text-[2.75rem] text-indigo font-display font-bold max-w-[700px] leading-[1.1] tracking-tight opacity-0 animate-[fadeUp_600ms_cubic-bezier(0.25,0.46,0.45,0.94)_forwards]"
+    >
+      Strategic marketing for leaders who are done hiding behind dashboards
+    </h1>
+
+    <div
+      class="w-16 h-1 bg-orange rounded-full opacity-0 animate-[fadeUp_600ms_cubic-bezier(0.25,0.46,0.45,0.94)_100ms_forwards]"
+    >
+    </div>
+
+    <p
+      class="text-[22px] md:text-[28px] font-display font-semibold text-slate-blue max-w-[600px] leading-snug opacity-0 animate-[fadeUp_600ms_cubic-bezier(0.25,0.46,0.45,0.94)_200ms_forwards]"
+    >
+      Rigor isn't a strategy
+    </p>
+
+    <div
+      class="pt-4 flex flex-wrap items-center gap-6 opacity-0 animate-[fadeUp_600ms_cubic-bezier(0.25,0.46,0.45,0.94)_400ms_forwards]"
+    >
+      <a
+        href="/contact"
+        class="inline-block bg-orange text-indigo font-body font-semibold py-3 px-8 rounded-md transition-all duration-300 hover:bg-orange/90 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-orange/20 active:translate-y-0 active:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
+      >
+        Get in touch
+      </a>
+      <a
+        href="/writing"
+        class="font-mono text-[13px] uppercase tracking-widest text-slate-blue/80 hover:text-orange transition-colors decoration-transparent hover:decoration-orange underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+      >
+        Read my ideas &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    h1,
+    div,
+    p,
+    a {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>

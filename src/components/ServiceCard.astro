@@ -1,0 +1,30 @@
+---
+import ScrollFadeIn from './ScrollFadeIn.astro';
+
+interface Props {
+  name: string;
+  description: string;
+  href: string;
+  delay?: 0 | 100 | 200 | 300;
+}
+
+const { name, description, href, delay = 0 } = Astro.props;
+---
+
+<ScrollFadeIn delay={delay} class="h-full">
+  <div class="h-full flex flex-col p-8 rounded-lg bg-linen/50 ring-1 ring-inset ring-slate-blue/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] hover:shadow-[0_4px_24px_-4px_rgba(20,46,82,0.05),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300">
+    <h3 class="font-display font-semibold text-[22px] md:text-2xl text-indigo mb-4">
+      {name}
+    </h3>
+    <p class="font-body text-base text-slate-blue leading-relaxed mb-8 flex-grow" set:html={description} />
+    <a
+      href={href}
+      class="group inline-flex items-center text-orange font-mono text-[13px] uppercase tracking-widest hover:text-orange/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm w-max"
+    >
+      Learn more 
+      <svg class="w-4 h-4 mt-[1px] ml-1 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </a>
+  </div>
+</ScrollFadeIn>

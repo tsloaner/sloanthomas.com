@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScrollFadeIn from '../components/ScrollFadeIn.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout title="Get in touch — Thomas Sloan">
+  <div class="pt-16 pb-32 px-6">
+    <div class="max-w-[700px] w-full mx-auto">
+
+      <!-- Success state — shown after Formspree redirects back with ?success=true -->
+      <div id="contact-success" class="hidden py-8">
+        <div class="flex items-start gap-5">
+          <div class="shrink-0 w-11 h-11 bg-orange/10 border border-orange/30 rounded-full flex items-center justify-center mt-1">
+            <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-display font-bold text-3xl text-indigo mb-2">Message sent.</h2>
+            <p class="font-body text-lg text-slate-blue leading-relaxed">
+              I'll be in touch soon.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Default form state -->
+      <div id="contact-form-section">
+        <ScrollFadeIn delay={0}>
+          <h1 class="text-indigo mb-6">
+            Get in touch
+          </h1>
+          <p class="font-body text-[18px] md:text-[20px] text-slate-blue max-w-[600px] leading-relaxed mb-16">
+            Whether you have a specific project in mind or just want to explore whether we're a good fit — I'd like to hear from you.
+          </p>
+        </ScrollFadeIn>
+
+        <ScrollFadeIn delay={100}>
+          <ContactForm />
+        </ScrollFadeIn>
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  if (window.location.search.includes('success=true')) {
+    document.getElementById('contact-success')?.classList.remove('hidden');
+    document.getElementById('contact-form-section')?.classList.add('hidden');
+    // Clean the URL so a page refresh doesn't re-show the success message
+    window.history.replaceState({}, '', '/contact');
+  }
+</script>

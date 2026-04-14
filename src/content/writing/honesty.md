@@ -17,9 +17,9 @@ Companies prefer to treat marketing as an engineering problem, a machine where y
 
 It doesn't work that way. **Marketing is (or should be) essentially gambling**. You take calculated risks, hoping that one of your long-shots pays off while minimizing the downside. There's little point to gambling if you try to play it safe. You lose by avoiding losses.
 
-It's messy because marketing is about humans and *humans* are messy. Externally, it's difficult to predict what tactics will work on your audience and control any of the dozens of environmental factors. Internally — office politics, cognitive biases, and processes skew every output.
+It's messy because marketing is about humans and *humans* are messy. Externally, it's difficult to predict what tactics will work on your audience and control any of the dozens of environmental factors. Internally, office politics, cognitive biases, and processes skew every output.
 
-The way through is radical honesty. You have to be honest about your product, position, performance, problems and people. You can't take calculated risks without an honest read of the situation, and you can't have that in an organization that punishes honesty.
+**The way through is radical honesty.** You have to be honest about your product, position, performance, problems and people. You can't take calculated risks without an honest read of the situation, and you can't have that in an organization that punishes honesty.
 
 The issue is honesty is costly, and companies develop defenses against doing anything costly. Being outwardly honest is often punished by higher-ups who wish to protect themselves, and this candor can rub people the wrong way. Complacency is rewarded, and growth stalls. No one likes to directly acknowledge the power dynamics that affect work, but being honest about them helps create smoother outcomes.
 
@@ -47,7 +47,7 @@ The issue is that planning and project management *feels* secure because it's re
 
 But if we're leaning into honesty, that's exactly why you have to lean into those feelings. Planning is a list of activities; strategy is a choice that rules things out, and that always feels uncomfortable.
 
-I'm a fan of Rumelt's "kernel of good strategy". All good strategy starts with a clear-eyed diagnosis of the problem, identifying your guiding policies, and putting a series of coherent actions in place.
+I'm a fan of Rumelt's <a href="https://www.fredperrotta.com/kernel-of-strategy/" target="_blank" rel="noopener noreferrer">"kernel of good strategy"</a>. All good strategy starts with a clear-eyed diagnosis of the problem, identifying your guiding policies, and putting a series of coherent actions in place.
 
 Most companies are not honest with themselves at this stage. Goals are not a strategy, and neither are tactics. "Grow MQLs 30% by launching a podcast" without a solid theory of the problem leads to ineffective action.
 
@@ -59,7 +59,7 @@ Strategy is about focus. And ultimately, execution should be, too. This is where
 
 Most of the "work" doesn't matter. Minor copy edits, changing the color of a CTA button, updating the project management tool. It's majoring in the minors, busywork that doesn't move any needles.
 
-Marketing work isn't a machine, but it *is* a system. Donella Meadows, the original systems thinker, has [her list](https://en.wikipedia.org/wiki/Twelve_leverage_points) of highest leverage points to change a system. The highest level of impact and abstraction is realizing that these systems are made-up and changeable. At the more practical levels, it's about changing the goals, rules and structure of the system.
+**Marketing work isn't a machine, but it *is* a system.** Donella Meadows, the original systems thinker, has <a href="https://en.wikipedia.org/wiki/Twelve_leverage_points" target="_blank" rel="noopener noreferrer">her list</a> of highest leverage points to change a system. The highest level of impact and abstraction is realizing that these systems are made-up and changeable. At the more practical levels, it's about changing the goals, rules and structure of the system.
 
 Moving information around and holding meetings matters little if you haven't had an honest evaluation of the system you're operating in. What are the (un)written rules? What are the stated and actual outputs? Is the structure effective?
 
@@ -73,7 +73,7 @@ Most of what you do doesn't matter, so the approach is to find the small number 
 
 ### Work on problems
 
-Every business exists to solve a problem. What does yours solve? If we're honest, that's what your audience cares about — how well you can solve their problem. Not your new website, campaign, or new locations. Product people love to say, "love the problem, not the solution", the same approach applies to marketing.
+Every business exists to solve a problem. What does yours solve? If we're honest, that's what your audience cares about, how well you can solve their problem. Not your new website, campaign, or new locations. Product people love to say, "love the problem, not the solution", the same approach applies to marketing.
 
 There is a difference between simple and easy. Marketing can be as simple as: "Empathize with the problem your audience is having to earn attention. Demonstrate why your solution is trustworthy. Convert them into the next stage along their journey."
 
@@ -85,19 +85,19 @@ Companies that are full of competent, well-meaning people still combine to creat
 
 Good strategy requires an honest understanding of the world, your company, and yourselves. It requires someone in the room saying what no one wants to hear. "Our product isn't differentiated enough, this campaign won't work, we don't have the resources to succeed".
 
-The person who says it pays a political cost by violating the shared story of excellence and progress that provides motivation and cohesion to the team. Complacency is free. Cheerleading is rewarded. Over time, honesty is selected out and the system stays stuck.
+The person who says it pays a political cost by violating the shared story of excellence and progress that provides motivation and cohesion to the team. Complacency is free. Cheerleading is rewarded. **Over time, honesty is selected out and the system stays stuck.**
 
 This isn't just a pattern of human behavior, it's how systems work. Donella Meadows, the systems thinker, had another potent observation: in any system, the most powerful interventions are also the ones the system fights hardest to prevent.
 
 The easy interventions — adjusting budgets, tweaking targets, optimizing tactics — are the least impactful. The powerful ones — changing the goals of a system, surfacing the assumptions underneath it, redesigning its rules — are the most. They're powerful because they're uncomfortable, difficult, and rarely acted on.
 
-There's a name for this. Chris Argyris calls these "defensive routines", the elaborate ways organizations develop to avoid threatening information. And "[skilled incompetence](https://hbr.org/1986/09/skilled-incompetence)", people becoming experts at not noticing the things that would force them to act.
+There's a name for this. Chris Argyris calls these "defensive routines", the elaborate ways organizations develop to avoid threatening information. And "<a href="https://hbr.org/1986/09/skilled-incompetence" target="_blank" rel="noopener noreferrer">skilled incompetence</a>", people becoming experts at not noticing the things that would force them to act.
 
 Honesty about the situation is the most powerful intervention available to a marketing team. Which is exactly why organizations develop such elaborate defenses against it.
 
 ### I've experienced this from the inside
 
-**At Techstars**, I helped manage our "Community Programs" — grassroots startup education/competition events that took place across the world.
+**At Techstars**, I helped manage our <a href="https://www.techstars.com/communities" target="_blank" rel="noopener noreferrer">"Community Programs"</a> — grassroots startup education/competition events that took place across the world.
 The angle for us was that it was a) aligned with the "Give First" brand, b) good brand exposure and c) decent talent and investment pipeline.
 
 I was tasked with increasing the "success" (ticket sales and NPS) of these programs by working with the organizers. However, we didn't pay the organizers (who had to put in 100+ hours of collective free labor) and the organizers didn't pay us. No leverage or accountability, and thus no reliability. As a large loss-maker for the business, we didn't receive many resources to help in other, non-monetary ways. Of course, numbers declined across the board.
@@ -130,9 +130,9 @@ To be clear, meeting to make decisions is not an inherently bad thing. You need 
 
 Teams chase measurable, short-term results because measurability and causality are defensive mechanisms. Long-term results are too difficult to tie to individual actions. Nobody ever got fired for a healthy-looking dashboard.
 
-A 2013 study of hundreds of effective companies showed that brand building drives 60% of long-term business effects. Then, updated research in 2022 showed that 95% of your marketing should be brand-building for the out-of-market buyers. But most companies invest in reverse, because quarterly activation data is legible to CFOs and brand isn't.
+A <a href="https://maynardpaton.com/wp-content/uploads/2019/12/SYS1-long-and-short-of-it.pdf" target="_blank" rel="noopener noreferrer">2013 study</a> of hundreds of effective companies showed that brand building drives 60% of long-term business effects. Then, <a href="https://marketingscience.info/news-and-insights/prof-byron-sharp-skewers-binet-tells-marketers-to-sack-agencies-preaching-share-of-voice" target="_blank" rel="noopener noreferrer">updated research in 2022</a> showed that 95% of your marketing should be brand-building for the out-of-market buyers. But most companies invest in reverse, because quarterly activation data is legible to CFOs and brand isn't.
 
-*(I've written separately about why this happens. Most marketing teams have traded effectiveness for measurability, and killed their results in the process — [read it here](/writing/data).)*
+*(I've written separately about why this happens. Most marketing teams have traded effectiveness for measurability, and killed their results in the process — <a href="/writing/data" target="_blank" rel="noopener noreferrer">read it here</a>.)*
 
 The work is patient. You water plants for a long time before anything sprouts. Teams that can't tolerate the wait kill their brand-building before it has a chance to show.
 
@@ -142,13 +142,13 @@ Customer personas, surveys, competitor analysis, best-practice docs. This is rea
 
 David Ogilvy said it best, "The trouble with market research is that people don't think what they feel, they don't say what they think and they don't do what they say."
 
-We [know now](https://pubmed.ncbi.nlm.nih.gov/33690931/) that stated and revealed preferences can be far apart.
+We <a href="https://pubmed.ncbi.nlm.nih.gov/33690931/" target="_blank" rel="noopener noreferrer">know now</a> that stated and revealed preferences can be far apart.
 
-There is an important distinction between research that observes what people do and seeks to understand why — behavioral, psychological, friction analysis. And the research that tries to predict what people think they'll do. The first is indispensable, the second is a defense against uncertainty. That's why an honest understanding of the environment that creates conviction in your approach is so important.
+There is an important distinction between research that observes what people do and seeks to understand why — behavioral, psychological, friction analysis. And the research that tries to predict what people think they'll do – surveys, focus groups, personas. The first is indispensable, the second is a defense against uncertainty. That's why an honest understanding of the environment that creates conviction in your approach is so important.
 
 ### External Pessimism, Internal Optimism
 
-I've struggled with pessimism in my career. I find it valuable to highlight flaws and potential causes of failure, I'm good at chiseling away at ideas until they resemble something valuable. I lean on [base-rates](https://en.wikipedia.org/wiki/Base_rate_fallacy) of failure and am too painfully aware of the [planning fallacy](https://en.wikipedia.org/wiki/Planning_fallacy). Coworkers perceived this as poor attitude and negativity.
+I've struggled with pessimism in my career. I find it valuable to highlight flaws and potential causes of failure, I'm good at chiseling away at ideas until they resemble something valuable. I lean on <a href="https://en.wikipedia.org/wiki/Base_rate_fallacy" target="_blank" rel="noopener noreferrer">base-rates</a> of failure and am too painfully aware of the <a href="https://en.wikipedia.org/wiki/Planning_fallacy" target="_blank" rel="noopener noreferrer">planning fallacy</a>. Coworkers perceived this as poor attitude and negativity.
 
 I grappled with how to balance rigor with positivity, until I found this approach. You have to be *externally pessimistic*. Be brutally honest about the situation, the obstacles, the things that won't work and why. Then, pair it with *internal optimism*. Commit to your plan with confidence, knowing it's wrong in ways you cannot see but can figure out as you go.
 
@@ -162,7 +162,7 @@ This inversion is the whole game.
 
 ### Make diagnosis indispensable
 
-Diagnosing your real problem and your strategy to tackle it determines the rest of the work and your long-term success — so give it the time and attention it deserves *before* you do anything else.
+Diagnosing your real problem and your strategy to tackle it determines the rest of the work and your long-term success, so give it the time and attention it deserves *before* you do anything else.
 
 Most marketing starts at step two. A goal, with tactics, with little about why the team believes this is a problem worth solving and why they believe the approach will work.
 

@@ -1,0 +1,137 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ScrollFadeIn from '../components/ScrollFadeIn.astro';
+import BottomCTA from '../components/BottomCTA.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    summary: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={`${frontmatter.title} — Thomas Sloan`} description={frontmatter.summary}>
+  <!-- Reading progress bar — sits flush at the bottom edge of the fixed nav (top-28 = 7rem = 112px) -->
+  <div
+    id="reading-progress"
+    class="fixed left-0 top-28 z-40 h-[2px] w-0 bg-orange"
+    aria-hidden="true"
+  ></div>
+
+  <article class="pt-16 pb-32 px-6">
+    <div class="max-w-[1200px] mx-auto">
+      <ScrollFadeIn delay={0}>
+        <div class="max-w-[750px] mx-auto">
+          <a
+            href="/writing"
+            class="inline-flex items-center gap-2 font-mono text-[13px] uppercase tracking-widest text-orange hover:text-orange/80 transition-colors mb-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+          >
+            <span class="text-lg leading-none mt-[-2px]">←</span> All Articles
+          </a>
+          <h1 class="font-display font-bold leading-[1.1] text-indigo mb-6">
+            {frontmatter.title}
+          </h1>
+        </div>
+      </ScrollFadeIn>
+
+      <div
+        id="article-body"
+        class="max-w-[640px] mx-auto font-body text-[18px] text-slate-blue leading-[1.7]
+        [&_h2]:text-indigo [&_h2]:font-display [&_h2]:font-semibold [&_h2]:text-3xl [&_h2]:mt-16 [&_h2]:mb-6
+        [&_h3]:text-indigo [&_h3]:font-display [&_h3]:font-semibold [&_h3]:text-2xl [&_h3]:mt-12 [&_h3]:mb-4
+        [&_p]:mb-6
+        [&_a]:text-orange [&_a]:no-underline hover:[&_a]:underline [&_a]:transition-colors
+        [&_blockquote]:border-l-4 [&_blockquote]:border-orange/40 [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-slate-blue/80 [&_blockquote]:my-8
+        [&_strong]:text-indigo [&_strong]:font-semibold
+        [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_li]:mb-2
+        marker:text-slate-blue/60
+        [&_img]:w-full [&_img]:rounded-sm [&_img]:my-8 [&_img]:object-cover
+        [&_hr]:border-slate-blue/15 [&_hr]:my-12"
+      >
+        <slot />
+      </div>
+
+      <div class="max-w-[640px] mx-auto mt-16 pt-8 border-t border-slate-blue/15">
+        <a
+          href="/writing"
+          class="inline-flex items-center gap-2 font-mono text-[13px] uppercase tracking-widest text-orange hover:text-orange/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+        >
+          ← All Articles
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <BottomCTA />
+</BaseLayout>
+
+<style is:global>
+  .article-fade {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+  .article-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  function initArticleFeatures() {
+    // ── 1. Reading progress bar ──────────────────────────────────────────────
+    const bar = document.getElementById('reading-progress') as HTMLElement | null;
+
+    if (bar) {
+      const updateProgress = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = `${Math.min(progress, 100)}%`;
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress(); // set on load in case user refreshed mid-page
+    }
+
+    // ── 2. Section fade-in ───────────────────────────────────────────────────
+    const body = document.getElementById('article-body');
+    if (!body) return;
+
+    // Respect prefers-reduced-motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Only animate H2 section headings
+    const targets = body.querySelectorAll<HTMLElement>(':scope > h2');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.08,
+      }
+    );
+
+    targets.forEach((el) => {
+      el.classList.add('article-fade');
+      observer.observe(el);
+    });
+  }
+
+  // Run on initial page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initArticleFeatures);
+  } else {
+    initArticleFeatures();
+  }
+</script>

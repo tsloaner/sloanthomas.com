@@ -1,0 +1,39 @@
+---
+import ScrollFadeIn from "./ScrollFadeIn.astro";
+
+interface Props {
+  title: string;
+  summary: string;
+  slug: string;
+  delay?: 0 | 100 | 200 | 300 | 400;
+  readingTime?: number;
+}
+
+const { title, summary, slug, delay = 0, readingTime } = Astro.props;
+---
+
+<ScrollFadeIn delay={delay}>
+  <a
+    href={`/writing/${slug}`}
+    class="group flex flex-col h-full bg-linen/30 shadow-sm border border-slate-blue/20 hover:border-orange/60 hover:shadow-md transition-all duration-300 p-8 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange hover:-translate-y-1"
+  >
+    <article class="flex flex-col h-full text-left">
+      <h2
+        class="font-display font-semibold text-[22px] md:text-2xl text-indigo mb-4 group-hover:text-indigo/80 transition-colors line-clamp-3"
+      >
+        {title}
+      </h2>
+      <p
+        class="font-body text-base text-slate-blue leading-relaxed m-0 flex-grow line-clamp-4"
+      >
+        {summary}
+      </p>
+      <div
+        class="mt-8 font-mono text-[13px] uppercase tracking-widest text-slate-blue/80 group-hover:text-orange transition-colors flex items-center gap-3"
+      >
+        <span class="flex items-center gap-1">Read <span class="group-hover:translate-x-1 transition-transform">&rarr;</span></span>
+        {readingTime && <span class="text-slate-blue/50 group-hover:text-orange/70 transition-colors">{readingTime} min read</span>}
+      </div>
+    </article>
+  </a>
+</ScrollFadeIn>

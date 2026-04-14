@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import PhilosophySection from "../components/PhilosophySection.astro";
+import ServicesPreview from "../components/ServicesPreview.astro";
+import TestimonialSection from "../components/TestimonialSection.astro";
+import BottomCTA from "../components/BottomCTA.astro";
+---
+
+<BaseLayout>
+  <Hero />
+  <ServicesPreview />
+  <PhilosophySection />
+  <div style="display: none;"><TestimonialSection /></div>
+  <!-- A subtle divider could go here if needed, but styling ensures sections breathe -->
+  <BottomCTA />
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import ScrollFadeIn from "../../components/ScrollFadeIn.astro";
+
+// Get and sort articles
+const allPosts = await getCollection("writing", ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort(
+  (a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0)
+);
+---
+
+<BaseLayout title="Writing — Thomas Sloan">
+  <div class="pt-16 pb-32 px-6">
+    <div class="max-w-[1200px] w-full mx-auto">
+      <ScrollFadeIn delay={0}>
+        <h1
+          class="text-indigo mb-6"
+        >
+          Writing
+        </h1>
+        <p class="font-body text-[18px] text-slate-blue leading-relaxed mb-16">
+          Longer explorations of the ideas behind my work.
+        </p>
+      </ScrollFadeIn>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        {
+          sortedPosts.slice(0, 3).map((post, index) => {
+            // Calculate stagger delay (0, 100, 200, 300...) capped at 400
+            const del = Math.min(index * 100, 400) as any;
+            const readingTime = Math.max(1, Math.ceil(post.body.split(/\s+/).filter(Boolean).length / 225) - 2);
+            return (
+              <ArticleCard
+                title={post.data.title}
+                summary={post.data.summary}
+                slug={post.id}
+                delay={del}
+                readingTime={readingTime}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScrollFadeIn from '../components/ScrollFadeIn.astro';
+import BottomCTA from '../components/BottomCTA.astro';
+
+const services = [
+  {
+    number: "01",
+    name: "The Diagnostic",
+    tagline: "Find what's quietly costing you customers.",
+    idealFor: "B2B SaaS founders and marketing leaders who sense something is off but can't name it. Companies with real traction but stalled activation or retention.",
+    description: "A focused examination of where your marketing is signaling the wrong things, where friction is killing conversion, and which strategic choices have been quietly avoided. I work from how people actually make decisions — not how funnel diagrams assume they do. You'll get a prioritized blueprint with specific findings, sequenced recommendations, and enough detail that you or your team can act on it immediately.",
+    includes: [
+      "End-to-end journey walkthrough",
+      "Heuristic friction analysis",
+      "Prioritized matrix of recommended fixes",
+      "1-hour presentation and handover"
+    ],
+  },
+  {
+    number: "02",
+    name: "Behavioral Architecture Sprint",
+    tagline: "Build the system that reflects how your customers actually decide.",
+    idealFor: "Companies with a clear gap between signups and activated customers, or between trial and paid. Teams who have the data but don't know why it isn't converting.",
+    description: "Now that you know what's broken, let's fix it. I build the system — funnel logic, lifecycle flows, activations — inside your existing tools, grounded in how your customers actually think and decide. Most funnels are mathematically sound but psychologically broken. I rebuild the parts that are costing you customers, hand you the keys, and document everything so your team can run it.",
+    includes: [
+      "In-depth qualitative review",
+      "Messaging and positioning check",
+      "Competitive anchor evaluation",
+      "Actionable diagnostic report"
+    ],
+  },
+  {
+    number: "03",
+    name: "Strategic Advisory",
+    tagline: "A sharp voice in the room who isn't afraid to push back.",
+    idealFor: "Companies in the middle of a repositioning, a strategic pivot, or a hard call about where to invest. Leaders who want someone in their corner who isn't afraid to push back.",
+    description: "An ongoing thought partnership for founders and marketing leaders making hard strategic calls who want someone sharp in the room who isn't trying to stay in the room. I'll poke holes in your plan, call out lazy thinking, push you toward high-leverage work, and keep you honest about what your audience responds to. Helping you make the calls everybody else considers too politically risky.",
+    includes: [
+      "Stakeholder interviews",
+      "Current-state strategy mapping",
+      "Constraint identification",
+      "Roadmap for high-leverage activities"
+    ],
+  }
+];
+---
+
+<BaseLayout title="Services — Thomas Sloan">
+  <div class="pt-16 pb-32 px-6">
+    <div class="max-w-[1200px] w-full mx-auto">
+      <ScrollFadeIn delay={0}>
+        <h1 class="text-indigo mb-8">
+          Services
+        </h1>
+        <p class="font-body text-[18px] md:text-[20px] text-slate-blue max-w-[700px] leading-relaxed mb-24">
+          Most marketing doesn't fail from bad execution, it fails from avoiding judgment about how you become distinctive, what you're signaling to your audience, and what to focus on. I help founders and marketing leaders make those calls, build the systems that reflect them, and keep them accountable when it gets uncomfortable.
+        </p>
+      </ScrollFadeIn>
+
+      <!-- Accordion Services -->
+      <div id="services-accordion" class="border-t border-slate-blue/15">
+        {services.map((svc, i) => (
+          <ScrollFadeIn delay={(i * 100) as any}>
+            <div class="service-item border-b border-slate-blue/15">
+              <!-- Always-visible header -->
+              <button
+                class="service-trigger w-full text-left py-8 md:py-10 flex items-start gap-6 md:gap-10 group focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset rounded-sm"
+                aria-expanded="false"
+              >
+                <!-- Number -->
+                <span class="font-mono text-[13px] text-slate-blue/40 tracking-widest uppercase shrink-0 pt-1">
+                  {svc.number}
+                </span>
+
+                <!-- Name + tagline -->
+                <div class="flex-1 min-w-0">
+                  <h2 class="font-display font-semibold text-[1.5rem] md:text-[1.75rem] text-indigo group-hover:text-indigo/80 transition-colors leading-snug mb-2">
+                    {svc.name}
+                  </h2>
+                  <p class="font-body text-[1rem] text-slate-blue leading-relaxed">
+                    {svc.tagline}
+                  </p>
+                  <p class="font-body text-[0.9375rem] text-slate-blue italic mt-2 max-w-[60ch]">
+                    Best for: {svc.idealFor}
+                  </p>
+                </div>
+
+                <!-- Chevron -->
+                <span
+                  class="service-chevron shrink-0 mt-1 w-10 h-10 flex items-center justify-center text-orange"
+                  aria-hidden="true"
+                >
+                  <svg class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </button>
+
+              <!-- Expandable body -->
+              <div
+                class="service-body grid grid-rows-[0fr] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0"
+              >
+                <div class="overflow-hidden min-h-0">
+                  <div class="pb-10 pl-[calc(2rem+1.5625rem)] md:pl-[calc(2.5rem+1.5625rem)]">
+                    <p class="font-body text-lg text-slate-blue leading-relaxed mb-8 max-w-[680px]">
+                      {svc.description}
+                    </p>
+
+                    <a
+                      href="/contact"
+                      class="inline-block bg-transparent text-indigo font-body font-semibold py-3 px-8 rounded-md border border-indigo transition-all duration-300 hover:bg-indigo hover:text-linen focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-linen focus-visible:ring-indigo"
+                    >
+                      Inquire about this
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollFadeIn>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <BottomCTA />
+</BaseLayout>
+
+<script>
+  function initAccordion() {
+    const items = document.querySelectorAll(".service-item");
+
+    items.forEach((item) => {
+      const trigger = item.querySelector(".service-trigger") as HTMLButtonElement | null;
+      const body = item.querySelector(".service-body") as HTMLElement | null;
+      const chevron = item.querySelector(".service-chevron svg") as SVGElement | null;
+
+      if (!trigger || !body) return;
+
+      trigger.addEventListener("click", () => {
+        const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+        // Close all other items (one-open-at-a-time)
+        items.forEach((other) => {
+          if (other === item) return;
+          const otherTrigger = other.querySelector(".service-trigger") as HTMLButtonElement | null;
+          const otherBody = other.querySelector(".service-body") as HTMLElement | null;
+          const otherChevron = other.querySelector(".service-chevron svg") as SVGElement | null;
+          if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
+          if (otherBody) {
+            otherBody.classList.remove("grid-rows-[1fr]", "opacity-100");
+            otherBody.classList.add("grid-rows-[0fr]", "opacity-0");
+          }
+          if (otherChevron) otherChevron.style.transform = "";
+        });
+
+        // Toggle current
+        if (isOpen) {
+          trigger.setAttribute("aria-expanded", "false");
+          body.classList.remove("grid-rows-[1fr]", "opacity-100");
+          body.classList.add("grid-rows-[0fr]", "opacity-0");
+          if (chevron) chevron.style.transform = "";
+        } else {
+          trigger.setAttribute("aria-expanded", "true");
+          body.classList.remove("grid-rows-[0fr]", "opacity-0");
+          body.classList.add("grid-rows-[1fr]", "opacity-100");
+          if (chevron) chevron.style.transform = "rotate(180deg)";
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAccordion);
+  } else {
+    initAccordion();
+  }
+</script>
