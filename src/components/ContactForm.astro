@@ -139,5 +139,11 @@
     if (!btn) return;
     btn.disabled = true;
     btn.textContent = 'Sending\u2026';
+
+    // Fallback: Reset button state after 7 seconds if the browser fails to redirect
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    }, 7000);
   });
 </script>
