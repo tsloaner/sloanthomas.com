@@ -1,0 +1,47 @@
+---
+const logos = [
+  { src: "/techstars_logo.svg", alt: "Techstars", delay: 0, tall: true },
+  { src: "/cu_logo.svg", alt: "CU Boulder", delay: 100 },
+  { src: "/topanga_logo.png", alt: "Topanga Partners", delay: 200 },
+  { src: "/alcove_logo.png", alt: "Alcove", delay: 300 },
+  { src: "/du_logo.svg", alt: "University of Denver", delay: 400 },
+  { src: "/upcontent_logo.png", alt: "UpContent", delay: 500 },
+];
+---
+
+<section class="bg-slate-blue/10 py-6 px-6">
+  <div class="max-w-[1200px] w-full mx-auto flex flex-col items-center">
+    <p class="scroll-fade-in font-mono text-[11px] uppercase tracking-widest text-slate-blue/50 mb-6">
+      Experience working with
+    </p>
+    <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+      {logos.map(({ src, alt, delay, tall }) => (
+        <div class="scroll-fade-in logo-wrapper" data-delay={delay}>
+          <img
+            src={src}
+            alt={alt}
+            class="logo-img w-auto object-contain"
+            style={tall ? "height: 48px; max-height: 48px;" : "height: 36px; max-height: 36px;"}
+            draggable="false"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-img {
+    filter: grayscale(1) contrast(0.85);
+    mix-blend-mode: multiply;
+    opacity: 0.68;
+    transition: opacity 250ms ease, filter 250ms ease;
+    user-select: none;
+  }
+
+  .logo-wrapper:hover .logo-img {
+    filter: none;
+    mix-blend-mode: normal;
+    opacity: 1;
+  }
+</style>
