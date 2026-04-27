@@ -3,8 +3,8 @@
 @theme {
   --color-indigo: oklch(0.301 0.073 257.068);
   --color-linen: oklch(0.919 0.017 103.164);
-  --color-slate-blue: oklch(0.502 0.025 252.663);
-  --color-orange: oklch(0.74 0.159 59.816);
+  --color-slate-blue: oklch(0.40 0.030 252.663);
+  --color-orange: oklch(0.71 0.159 59.816);
 
   --font-display: 'Fraunces', 'Georgia', serif;
   --font-body: 'DM Sans', 'system-ui', sans-serif;
@@ -49,6 +49,10 @@
     font-size: clamp(1.0625rem, 1vw + 0.8rem, 1.125rem); /* 17px-18px */
     line-height: 1.6;
     max-width: 65ch;
+  }
+
+  button {
+    cursor: pointer;
   }
 
   .label {

@@ -19,7 +19,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         { label: "Beliefs", href: "#beliefs" },
         { label: "Journey", href: "#journey" },
         { label: "Life", href: "#life" },
-        { label: "Contact", href: "#contact" },
       ].map(({ label, href }) => (
         <a
           href={href}
@@ -86,9 +85,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <!-- Scroll hint — inline, below short version text -->
         <div
-          class="scroll-hint mt-8 flex flex-col items-center gap-2 opacity-0 w-full max-w-[60ch]"
+          class="scroll-hint mt-8 flex flex-col items-center gap-2 w-full max-w-[60ch]"
           aria-hidden="true"
-          style="animation: fadeIn 600ms ease 2000ms forwards;"
         >
           <span class="font-mono text-[11px] uppercase tracking-widest text-slate-blue/70">Scroll to explore</span>
           <svg
@@ -97,7 +95,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             stroke="currentColor"
             stroke-width="1.5"
             viewBox="0 0 24 24"
-            style="animation: bounceDown 1.5s ease-in-out 2600ms infinite;"
+            style="animation: bounceDown 1.5s ease-in-out infinite;"
           >
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
@@ -728,44 +726,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <!-- Section 6: Contact -->
-  <section
-    id="contact"
-    class="min-h-[100dvh] bg-indigo flex items-start px-6 pt-[8vh] pb-24"
-  >
-    <div class="max-w-[600px] w-full mx-auto text-center">
-      <h2 class="scroll-fade-in font-display font-bold text-linen mb-6">
-        See How I Can Help
-      </h2>
-
-      <p
-        class="scroll-fade-in font-body text-linen/80 text-[1.0625rem] leading-relaxed mb-12 max-w-[50ch] mx-auto"
-        data-delay="100"
-      >
-        I work with B2B and SaaS teams to find and fix the friction in their
-        customer decision paths.
-      </p>
-
-      <div
-        class="scroll-fade-in flex flex-col items-center gap-6"
-        data-delay="200"
-      >
-        <a
-          href="/services"
-          class="inline-block bg-orange text-indigo font-body font-semibold py-4 px-10 rounded-md transition-all duration-300 hover:brightness-110 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-orange/20 active:translate-y-0 active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo focus-visible:ring-orange"
-        >
-          See How I Can Help &rarr;
-        </a>
-
-        <a
-          href="mailto:sloan.thomas.a@gmail.com"
-          class="font-body text-linen/70 text-[0.9375rem] underline decoration-transparent hover:text-linen hover:decoration-linen underline-offset-4 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
-        >
-          sloan.thomas.a@gmail.com
-        </a>
-      </div>
-    </div>
-  </section>
 </BaseLayout>
 
 <style is:global>
