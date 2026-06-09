@@ -1,0 +1,756 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ScrollFadeIn from "../components/ScrollFadeIn.astro";
+import BottomCTA from "../components/BottomCTA.astro";
+import ToolChip from "../components/ToolChip.astro";
+
+const projects = [
+  {
+    name: "Shared Signal",
+    href: "https://shared-signal.vercel.app/",
+    image: "/shared-signal.png",
+    hook: "Team culture is poisoned by people privately agreeing but publicly playing along. I built software to break the spell.",
+    body: [
+      "Pluralistic ignorance is the quiet killer of good organizations: everyone privately doubts the plan, assumes they're the only one, and stays silent. The bad decision survives because people are afraid to name it.",
+      "Shared Signal surfaces what a team actually believes by collecting positions privately and revealing them only once a threshold agrees. The risk of speaking up first disappears, and the real consensus becomes visible.",
+      "I built it because this is the failure mode I keep finding underneath broken marketing — not a skills gap, but a room full of people defending a decision none of them believe in. The product is one answer to that problem.",
+    ],
+  },
+  {
+    name: "ALCOVE Flash Game",
+    href: "https://alcovegame.vercel.app/",
+    image: "/alcove-game.png",
+    hook: "A client needed a new channel. I built them a game instead of a campaign.",
+    body: [
+      "ALCOVE makes the “Pod” — a private office space — and their promise is “productive peace and quiet.” During a brand relaunch, the obvious move was more ads. I made a browser game instead.",
+      "The game lets you experience the product's value in a fun way rather than reading a list of bullet points. It doubled as a low-cost channel experiment to see what earned attention without buying it.",
+      "This was the kind of unconventional, on-brand swing I'd rather take than another forgettable campaign.",
+    ],
+  },
+  {
+    name: "Lug",
+    href: "https://lug-five.vercel.app/",
+    image: "/lug.png",
+    hook: "Tuning drums is an annoying task with paid options to help. I made it free and browser-based.",
+    body: [
+      "Tuning a drum kit is famously vague and frustrating work. The existing solutions are expensive physical tools or paid apps — a gatekept problem with a captive audience.",
+      "Lug does it in the browser, for free. No download, no purchase, no account.",
+      "I'm a drummer, so this scratched a personal itch and gave me a chance to experiment with design and give back to the community.",
+    ],
+  },
+  {
+    name: "Boulder Gets Lit",
+    href: "https://bouldergetslit.vercel.app/",
+    image: "/boulder-gets-lit.png",
+    hook: "Turning a shared spreadsheet into a fun and useful tool.",
+    body: [
+      "My friend group keeps a book club and a detailed spreadsheet along with it. It holds answers to the questions we get often: favorites, worst books, who's the harshest critic, who's the best host.",
+      "Boulder Gets Lit turns the same data into something you can actually feel: patterns, recommendations, and the personality of a group of readers, visible at a glance.",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Work — Thomas Sloan"
+  description="How I think about business problems, applied to real work — finding the real lever in the system instead of treating the symptom."
+>
+  <div class="pt-16 pb-32 px-6">
+    <div class="max-w-[1200px] w-full mx-auto">
+      <!-- Lead -->
+      <ScrollFadeIn delay={0}>
+        <h1 class="text-indigo mb-8">Work</h1>
+      </ScrollFadeIn>
+      <ScrollFadeIn delay={100}>
+        <div class="max-w-[680px] mb-24">
+          <p
+            class="font-body text-[18px] md:text-[20px] text-slate-blue leading-relaxed"
+          >
+            I don't have fancy client logos or case studies… <em
+              class="text-indigo not-italic font-medium">yet</em
+            >. What I do have is my approach to thinking about business problems.
+            Here it is, applied to my past work.
+          </p>
+          <p
+            class="font-body text-[18px] md:text-[20px] text-indigo font-medium leading-relaxed mt-6"
+          >
+            I'm handed metrics, and work to find the real lever in the system.
+          </p>
+        </div>
+      </ScrollFadeIn>
+
+      <!-- ============ CASE STUDIES ============ -->
+      <ScrollFadeIn delay={0}>
+        <div class="flex items-center gap-4 mb-2">
+          <span class="label text-orange">Case Studies</span>
+          <span class="h-px flex-1 bg-slate-blue/15"></span>
+        </div>
+      </ScrollFadeIn>
+
+      <div class="accordion-group border-t border-slate-blue/15 mt-8">
+        <!-- 01 — UpContent -->
+        <ScrollFadeIn delay={0}>
+          <div class="accordion-item border-b border-slate-blue/15">
+            <button
+              class="accordion-trigger w-full text-left py-8 md:py-10 flex items-start gap-6 md:gap-10 group focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset rounded-sm"
+              aria-expanded="false"
+            >
+              <span
+                class="font-mono text-[13px] text-slate-blue/40 tracking-widest uppercase shrink-0 pt-2"
+                >01</span
+              >
+              <div class="flex-1 min-w-0">
+                <span
+                  class="font-mono text-[14px] uppercase tracking-[0.12em] text-orange/90"
+                  >UpContent</span
+                >
+                <h2
+                  class="font-display font-semibold text-[1.5rem] md:text-[1.875rem] text-indigo group-hover:text-indigo/80 transition-colors leading-snug mt-1 mb-2"
+                >
+                  The Onboarding Trust Issue
+                </h2>
+                <p
+                  class="font-body text-[1rem] text-slate-blue leading-relaxed max-w-[60ch]"
+                >
+                  A technically excellent search tool with one early, fatal flaw:
+                  it asked users to learn Boolean logic before they could get any
+                  value.
+                </p>
+              </div>
+              <span
+                class="accordion-chevron shrink-0 mt-2 w-10 h-10 flex items-center justify-center text-orange"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-7 h-7 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
+              </span>
+            </button>
+            <div
+              class="accordion-body grid grid-rows-[0fr] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0"
+            >
+              <div class="overflow-hidden min-h-0">
+                <div
+                  class="pb-12 pl-[calc(1.5rem+1.625rem)] md:pl-[calc(2.5rem+1.625rem)] max-w-[720px] space-y-8"
+                >
+                  <div>
+                    <span class="label text-orange/80">The Situation</span>
+                    <p class="mt-2">
+                      <a
+                        href="https://www.upcontent.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-indigo underline decoration-orange/40 decoration-1 underline-offset-2 hover:decoration-orange transition-colors"
+                        >UpContent</a
+                      > was a technically excellent search tool with an early, fatal
+                      flaw: it required users trained on years of Google searches to
+                      understand Boolean logic before they could get value. Strong
+                      signups met a brutal churn rate.
+                    </p>
+                  </div>
+                  <div>
+                    <span class="label text-orange/80">The Diagnosis</span>
+                    <p class="mt-2">
+                      Our churn wasn't a product or marketing problem — it was an
+                      onboarding and activation problem. It took too much time and
+                      effort for users to arrive at the "aha moment." The first
+                      instinct was to improve our support and help docs. That was
+                      being reactive. The users didn't understand the core mechanic
+                      and had difficulty trusting results they couldn't understand.
+                    </p>
+                  </div>
+                  <div>
+                    <span class="label text-orange/80">The Interventions</span>
+                    <ul class="mt-4 space-y-4">
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Created an onboarding flow</strong
+                          > that introduced Boolean search, demonstrated the tech,
+                          and gated the first experience — engineering the "aha" instead
+                          of hoping for it.</span
+                        >
+                      </li>
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Added a visible process to a confusing function.</strong
+                          > Instead of a progress bar, phrases like "surfacing content,"
+                          "ranking articles," and "eliminating spam" helped establish
+                          trust. Users distrust results that arrive too fast or that
+                          they don't understand. <ToolChip
+                            href="https://www.hbs.edu/faculty/Pages/item.aspx?num=40158"
+                            label="The Labor Illusion"
+                          /></span
+                        >
+                      </li>
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Built escalation logic into support.</strong
+                          > Self-serve first, fast human handoff second. Most users
+                          want to solve it themselves — until the moment they don't,
+                          and then they want a human ASAP. An automated support tool
+                          handled that.</span
+                        >
+                      </li>
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Wrote the best Boolean explainer on the internet.</strong
+                          > I admittedly wanted to copy somebody else's, but it didn't
+                          exist. I used <span class="bool-tip group/tip relative inline-block"
+                            ><button
+                              type="button"
+                              class="bool-trigger font-medium text-indigo underline decoration-dotted decoration-orange/70 underline-offset-4 hover:decoration-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm"
+                              aria-describedby="bool-pop-upcontent">pizza</button
+                            ><span
+                              role="tooltip"
+                              id="bool-pop-upcontent"
+                              class="bool-pop pointer-events-none absolute bottom-full left-0 z-30 mb-3 w-[min(24rem,80vw)] origin-bottom-left translate-y-1 scale-[0.98] opacity-0 rounded-lg bg-indigo p-4 text-linen shadow-xl shadow-indigo/25 transition-all duration-200 group-hover/tip:pointer-events-auto group-hover/tip:translate-y-0 group-hover/tip:scale-100 group-hover/tip:opacity-100 group-focus-within/tip:pointer-events-auto group-focus-within/tip:translate-y-0 group-focus-within/tip:scale-100 group-focus-within/tip:opacity-100"
+                            >
+                              <span
+                                class="block font-mono text-[12px] leading-relaxed text-linen/95 break-words"
+                                >("Pizza") <span class="text-orange">AND</span> ("Pepperoni"
+                                <span class="text-orange">OR</span> "Mushrooms"
+                                <span class="text-orange">OR</span> "Pineapple")</span
+                              >
+                              <span
+                                class="mt-2 block font-mono text-[12px] leading-relaxed text-linen/95 break-words"
+                                >("Pizza") <span class="text-orange">AND</span> ("Pepperoni"
+                                <span class="text-orange">OR</span> "Mushrooms")
+                                <span class="text-orange">NOT</span> ("Pineapple")</span
+                              >
+                              <span
+                                class="mt-3 block font-body text-[12px] leading-snug text-linen/65"
+                                >Same craving, two different orders — that's
+                                AND / OR / NOT.</span
+                              >
+                            </span></span
+                          > as the example.</span
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <span class="label text-orange/80">The Result</span>
+                    <p class="mt-2">
+                      Reduced churn. Reduced support load. The system started
+                      teaching users instead of relying on them to already know.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollFadeIn>
+
+        <!-- 02 — Techstars -->
+        <ScrollFadeIn delay={100}>
+          <div class="accordion-item border-b border-slate-blue/15">
+            <button
+              class="accordion-trigger w-full text-left py-8 md:py-10 flex items-start gap-6 md:gap-10 group focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset rounded-sm"
+              aria-expanded="false"
+            >
+              <span
+                class="font-mono text-[13px] text-slate-blue/40 tracking-widest uppercase shrink-0 pt-2"
+                >02</span
+              >
+              <div class="flex-1 min-w-0">
+                <span
+                  class="font-mono text-[14px] uppercase tracking-[0.12em] text-orange/90"
+                  >Techstars</span
+                >
+                <h2
+                  class="font-display font-semibold text-[1.5rem] md:text-[1.875rem] text-indigo group-hover:text-indigo/80 transition-colors leading-snug mt-1 mb-2"
+                >
+                  Fixing the system instead of the symptoms
+                </h2>
+                <p
+                  class="font-body text-[1rem] text-slate-blue leading-relaxed max-w-[60ch]"
+                >
+                  Unpaid organizers carrying 100+ hours on duct-taped tools. The
+                  way to sell more tickets was to support them better.
+                </p>
+              </div>
+              <span
+                class="accordion-chevron shrink-0 mt-2 w-10 h-10 flex items-center justify-center text-orange"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-7 h-7 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
+              </span>
+            </button>
+            <div
+              class="accordion-body grid grid-rows-[0fr] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0"
+            >
+              <div class="overflow-hidden min-h-0">
+                <div
+                  class="pb-12 pl-[calc(1.5rem+1.625rem)] md:pl-[calc(2.5rem+1.625rem)] max-w-[720px] space-y-8"
+                >
+                  <div>
+                    <span class="label text-orange/80">The Situation</span>
+                    <p class="mt-2">
+                      A global network of volunteer-run <a
+                        href="https://www.techstars.com/communities"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-indigo underline decoration-orange/40 decoration-1 underline-offset-2 hover:decoration-orange transition-colors"
+                        >startup events</a
+                      >. I was asked to improve ticket sales and organizer
+                      satisfaction.
+                      The organizers were unpaid, under-supported, and carrying
+                      100+ hours of work on duct-taped tools.
+                    </p>
+                  </div>
+                  <div>
+                    <span class="label text-orange/80">The Diagnosis</span>
+                    <p class="mt-2">
+                      The metrics I was responsible for — ticket sales, event
+                      growth — were treating symptoms. The real leverage point was
+                      the organizer's experience. Burnt-out organizers run worse
+                      events and don't return. We wouldn't be successful pushing
+                      organizers harder, but by fixing the friction they
+                      experienced. The answer to "sell more tickets" was to
+                      support the organizers better.
+                    </p>
+                  </div>
+                  <div>
+                    <span class="label text-orange/80">The Interventions</span>
+                    <ul class="mt-4 space-y-4">
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Redesigned the application process</strong
+                          > with branching logic and automated scoring — and reverse-engineered
+                          the traits of successful past events to build the criteria.</span
+                        >
+                      </li>
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Rebuilt the help docs content and structure</strong
+                          > so answers were findable at the moment of need, cutting
+                          the cognitive load for organizers. <ToolChip
+                            href="https://www.nngroup.com/articles/minimize-cognitive-load/"
+                            label="Cognitive Load"
+                          /></span
+                        >
+                      </li>
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Shifted from 1-to-1 mentorship to all-to-all knowledge
+                            sharing</strong
+                          > by interviewing top organizers and codifying their playbooks.</span
+                        >
+                      </li>
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Built activity-triggered onboarding emails</strong
+                          > keyed to real organizer milestones (venue secured, tickets
+                          live) instead of a generic time-based drip. Contextual relevance
+                          and timing beats volume.</span
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <span class="label text-orange/80">The Result</span>
+                    <p class="mt-2">
+                      Improved organizer NPS and everything downstream of it, from
+                      attendee NPS to repeat organizers. <ToolChip
+                        href="https://en.wikipedia.org/wiki/Twelve_leverage_points"
+                        label="System Leverage Points"
+                      />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollFadeIn>
+
+        <!-- 03 — CU Boulder -->
+        <ScrollFadeIn delay={200}>
+          <div class="accordion-item border-b border-slate-blue/15">
+            <button
+              class="accordion-trigger w-full text-left py-8 md:py-10 flex items-start gap-6 md:gap-10 group focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset rounded-sm"
+              aria-expanded="false"
+            >
+              <span
+                class="font-mono text-[13px] text-slate-blue/40 tracking-widest uppercase shrink-0 pt-2"
+                >03</span
+              >
+              <div class="flex-1 min-w-0">
+                <span
+                  class="font-mono text-[14px] uppercase tracking-[0.12em] text-orange/90"
+                  >CU Boulder</span
+                >
+                <h2
+                  class="font-display font-semibold text-[1.5rem] md:text-[1.875rem] text-indigo group-hover:text-indigo/80 transition-colors leading-snug mt-1 mb-2"
+                >
+                  The Inbox Value Exchange
+                </h2>
+                <p
+                  class="font-body text-[1rem] text-slate-blue leading-relaxed max-w-[60ch]"
+                >
+                  A 120K fixed audience, engagement quietly declining, and every
+                  email asking for something.
+                </p>
+              </div>
+              <span
+                class="accordion-chevron shrink-0 mt-2 w-10 h-10 flex items-center justify-center text-orange"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-7 h-7 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
+              </span>
+            </button>
+            <div
+              class="accordion-body grid grid-rows-[0fr] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0"
+            >
+              <div class="overflow-hidden min-h-0">
+                <div
+                  class="pb-12 pl-[calc(1.5rem+1.625rem)] md:pl-[calc(2.5rem+1.625rem)] max-w-[720px] space-y-8"
+                >
+                  <div>
+                    <span class="label text-orange/80">The Situation</span>
+                    <p class="mt-2">
+                      I managed email marketing as the primary channel for a <a
+                        href="https://www.colorado.edu/advancement/directory/advancement-marketing-and-communications"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-indigo underline decoration-orange/40 decoration-1 underline-offset-2 hover:decoration-orange transition-colors"
+                        >university fundraising operation</a
+                      >. A 120K+ list, with
+                      engagement quietly declining across key touchpoints. A fixed
+                      audience that couldn't be grown, only kept.
+                    </p>
+                  </div>
+                  <div>
+                    <span class="label text-orange/80">The Diagnosis</span>
+                    <p class="mt-2">
+                      Our communications were almost entirely "ask"-driven —
+                      donate, attend, volunteer, submit. Every email made a
+                      withdrawal from a finite account of attention and goodwill.
+                      Nobody's unmet need is "I have money and nowhere to give
+                      it." So the open-rate question every recipient was silently
+                      asking — "what's in it for me?" — had no good answer.
+                    </p>
+                  </div>
+                  <div>
+                    <span class="label text-orange/80">The Interventions</span>
+                    <ul class="mt-4 space-y-4">
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Inverted the "ask" to "give" ratio in our messaging.</strong
+                          > School pride via sports, research wins, alumni stories —
+                          the things that made people feel good about the institution
+                          before any request. <ToolChip
+                            href="https://news.wpcarey.asu.edu/20061206-gentle-science-persuasion-part-two-reciprocity"
+                            label="Reciprocity"
+                          /></span
+                        >
+                      </li>
+                      <li class="flex gap-3.5">
+                        <span
+                          class="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-orange/70"
+                        ></span>
+                        <span
+                          ><strong class="text-indigo font-semibold"
+                            >Rebuilt the email templates</strong
+                          > for scannability and modernity — headers, subheads, accessible
+                          structure — because a stale, recycled design gets pattern-matched
+                          to "ignorable" before it's read.</span
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <span class="label text-orange/80">The Result</span>
+                    <p class="mt-2">
+                      Steady engagement recovery across touchpoints, and record
+                      fundraising years. Long-game brand-feeding over short-term
+                      extraction.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollFadeIn>
+      </div>
+
+      <!-- ============ SIDE PROJECTS ============ -->
+      <ScrollFadeIn delay={0}>
+        <div class="flex items-center gap-4 mb-2 mt-28">
+          <span class="label text-orange">Side Projects</span>
+          <span class="h-px flex-1 bg-slate-blue/15"></span>
+        </div>
+        <p class="font-body text-[18px] text-slate-blue leading-relaxed max-w-[680px] mt-6">
+          Some vibe-coded projects I've had fun building. I've learned a lot
+          about design, product, and marketing along the way — and I'm happy to
+          apply those skills to your challenge.
+        </p>
+      </ScrollFadeIn>
+
+      <div class="accordion-group border-t border-slate-blue/15 mt-10">
+        {
+          projects.map((project, i) => (
+            <ScrollFadeIn delay={(i * 100) as any}>
+              <div class="accordion-item border-b border-slate-blue/15">
+                <div class="py-8 md:py-10 flex items-start gap-6 md:gap-10">
+                  <span class="font-mono text-[13px] text-slate-blue/40 tracking-widest uppercase shrink-0 pt-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group/link inline-flex items-start gap-2 font-display font-semibold text-[1.5rem] md:text-[1.875rem] text-indigo leading-snug transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded-sm"
+                    >
+                      <span
+                        class="underline decoration-1 decoration-slate-blue/30 underline-offset-[6px] group-hover/link:decoration-orange transition-colors"
+                        >{project.name}</span
+                      >
+                      <span
+                        aria-hidden="true"
+                        class="text-[0.6em] mt-[0.45em] text-orange transition-transform duration-200 group-hover/link:-translate-y-px group-hover/link:translate-x-px"
+                      >
+                        ↗
+                      </span>
+                      <span class="sr-only">(opens in new tab)</span>
+                    </a>
+                    <button
+                      class="accordion-trigger group mt-3 w-full text-left flex items-start justify-between gap-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset rounded-sm"
+                      aria-expanded="false"
+                    >
+                      <p class="font-body text-[1rem] text-slate-blue leading-relaxed max-w-[60ch]">
+                        {project.hook}
+                      </p>
+                      <span
+                        class="accordion-chevron shrink-0 mt-0.5 w-10 h-10 flex items-center justify-center text-orange"
+                        aria-hidden="true"
+                      >
+                        <svg
+                          class="w-7 h-7 transition-transform duration-300"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div class="accordion-body grid grid-rows-[0fr] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-0">
+                  <div class="overflow-hidden min-h-0">
+                    <div class="pb-12 pl-[calc(1.5rem+1.625rem)] md:pl-[calc(2.5rem+1.625rem)] grid gap-8 md:grid-cols-[minmax(0,1fr)_320px] md:gap-12 items-start">
+                      <div class="space-y-4 max-w-[620px]">
+                        {project.body.map((para) => (
+                          <p class="font-body text-slate-blue leading-relaxed">
+                            {para}
+                          </p>
+                        ))}
+                      </div>
+                      {/* Screenshot — set project.image above to replace this placeholder */}
+                      {project.image ? (
+                        <img
+                          src={project.image}
+                          alt={`${project.name} screenshot`}
+                          class="w-full rounded-lg border border-slate-blue/15 shadow-sm"
+                        />
+                      ) : (
+                        <div class="aspect-[16/10] w-full rounded-lg border border-dashed border-slate-blue/25 bg-indigo/[0.03] flex flex-col items-center justify-center gap-2.5 text-slate-blue/40">
+                          <svg
+                            class="w-7 h-7"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 19.5h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25z"
+                            />
+                          </svg>
+                          <span class="font-mono text-[11px] uppercase tracking-[0.08em]">
+                            Screenshot soon
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollFadeIn>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <BottomCTA />
+</BaseLayout>
+
+<script>
+  function initAccordions() {
+    const groups = document.querySelectorAll(".accordion-group");
+
+    groups.forEach((group) => {
+      const items = group.querySelectorAll(".accordion-item");
+
+      items.forEach((item) => {
+        const trigger = item.querySelector(
+          ".accordion-trigger"
+        ) as HTMLButtonElement | null;
+        const body = item.querySelector(
+          ".accordion-body"
+        ) as HTMLElement | null;
+        const chevron = item.querySelector(
+          ".accordion-chevron svg"
+        ) as SVGElement | null;
+
+        if (!trigger || !body) return;
+
+        trigger.addEventListener("click", () => {
+          const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+          // Close other items in the same group (one-open-at-a-time)
+          items.forEach((other) => {
+            if (other === item) return;
+            const oTrigger = other.querySelector(
+              ".accordion-trigger"
+            ) as HTMLButtonElement | null;
+            const oBody = other.querySelector(
+              ".accordion-body"
+            ) as HTMLElement | null;
+            const oChevron = other.querySelector(
+              ".accordion-chevron svg"
+            ) as SVGElement | null;
+            if (oTrigger) oTrigger.setAttribute("aria-expanded", "false");
+            if (oBody) {
+              oBody.classList.remove("grid-rows-[1fr]", "opacity-100");
+              oBody.classList.add("grid-rows-[0fr]", "opacity-0");
+            }
+            if (oChevron) oChevron.style.transform = "";
+          });
+
+          // Toggle current
+          if (isOpen) {
+            trigger.setAttribute("aria-expanded", "false");
+            body.classList.remove("grid-rows-[1fr]", "opacity-100");
+            body.classList.add("grid-rows-[0fr]", "opacity-0");
+            if (chevron) chevron.style.transform = "";
+          } else {
+            trigger.setAttribute("aria-expanded", "true");
+            body.classList.remove("grid-rows-[0fr]", "opacity-0");
+            body.classList.add("grid-rows-[1fr]", "opacity-100");
+            if (chevron) chevron.style.transform = "rotate(180deg)";
+          }
+        });
+      });
+    });
+  }
+
+  // Keep the Boolean-explainer popover clamped inside the viewport, no matter
+  // where the trigger word lands on its line.
+  function initBoolTips() {
+    document.querySelectorAll(".bool-tip").forEach((tip) => {
+      const trigger = tip.querySelector(".bool-trigger") as HTMLElement | null;
+      const pop = tip.querySelector(".bool-pop") as HTMLElement | null;
+      if (!trigger || !pop) return;
+
+      const place = () => {
+        pop.style.left = "0px";
+        const wordLeft = trigger.getBoundingClientRect().left;
+        const margin = 16;
+        const vw = document.documentElement.clientWidth;
+        const target = Math.min(
+          Math.max(wordLeft, margin),
+          Math.max(margin, vw - pop.offsetWidth - margin)
+        );
+        pop.style.left = `${target - wordLeft}px`;
+      };
+
+      trigger.addEventListener("mouseenter", place);
+      trigger.addEventListener("focus", place);
+      tip.addEventListener("mouseenter", place);
+    });
+  }
+
+  function init() {
+    initAccordions();
+    initBoolTips();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

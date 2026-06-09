@@ -1,0 +1,32 @@
+---
+// A small "reference chip" for the intellectual scaffolding behind a decision —
+// links out to the source (Labor Illusion, cognitive load, leverage points, etc.)
+interface Props {
+  href: string;
+  label: string;
+  class?: string;
+}
+const { href, label, class: className = "" } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    "group/chip inline-flex items-center gap-1.5 align-middle font-mono text-[11px] uppercase tracking-[0.08em] leading-none",
+    "rounded-full border border-slate-blue/20 bg-indigo/[0.035] px-2.5 py-1",
+    "text-slate-blue/90 transition-colors duration-200",
+    "hover:border-orange/45 hover:bg-orange/[0.06] hover:text-indigo",
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-1 focus-visible:ring-offset-linen",
+    className,
+  ]}
+>
+  <span
+    aria-hidden="true"
+    class="text-[9px] text-orange transition-transform duration-200 group-hover/chip:-translate-y-px group-hover/chip:translate-x-px"
+    >↗</span
+  >
+  <span>{label}</span>
+  <span class="sr-only">(reference, opens in new tab)</span>
+</a>
