@@ -1,7 +1,9 @@
 ---
+import BrainRibbon from "./BrainRibbon.astro";
 ---
 <section class="py-6 md:pt-[3vh] md:pb-[3vh] px-6 mt-2">
-  <div class="max-w-[1200px] w-full mx-auto flex flex-col items-start gap-5">
+  <div class="max-w-[1200px] w-full mx-auto flex flex-col lg:flex-row lg:items-center lg:gap-12">
+  <div class="flex flex-col items-start gap-5 lg:flex-1 lg:min-w-0">
     <p
       class="font-mono text-[13px] uppercase tracking-widest text-slate-blue/60 opacity-0 animate-[fadeUp_600ms_cubic-bezier(0.25,0.46,0.45,0.94)_forwards]"
     >
@@ -41,6 +43,11 @@
         Read my ideas &rarr;
       </a>
     </div>
+  </div>
+
+  <div class="hidden lg:block lg:flex-shrink-0 lg:w-[46%] opacity-0 animate-[fadeUp_800ms_cubic-bezier(0.25,0.46,0.45,0.94)_500ms_forwards]">
+    <BrainRibbon />
+  </div>
   </div>
 </section>
 
