@@ -1,6 +1,7 @@
 ---
 ---
-<div class="stage w-full aspect-[4/3]">
+<div class="brain-perspective w-full aspect-[4/3]">
+  <div class="stage">
   <svg id="brain" viewBox="0 0 960 720" role="img" aria-label="A human brain in lateral profile, surface formed by one continuous ribbon of binary and behavioral-science terms" style="width:100%;height:100%;display:block;">
     <defs id="defs">
       <path id="sil" fill="none" d="
@@ -40,14 +41,36 @@
     <path id="depthFill" fill="url(#brainDepth)" clip-path="url(#clip)"></path>
     <rect x="0" y="0" width="960" height="720" filter="url(#brainNoise)" clip-path="url(#clip)"></rect>
     <g id="grp" clip-path="url(#clip)"></g>
-    <path id="outline" fill="none" stroke-width="2.5" stroke-linejoin="round" style="stroke: oklch(0.301 0.073 257.068 / 0.28);"></path>
+    <path id="outline" fill="none" stroke-width="2.5" stroke-linejoin="round" stroke-opacity="0.28" style="stroke: oklch(0.301 0.073 257.068); will-change: stroke-width, stroke-opacity, filter;"></path>
   </svg>
+  </div>
 </div>
+
+<style>
+  .brain-perspective { perspective: 1400px; }
+  .stage {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .stage.dragging { cursor: grabbing; }
+  .stage svg { pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .stage { cursor: default; }
+  }
+</style>
 
 <script>
 const RIBBON_SPEED = 18;
 const TEXT_DENSITY = 1.0;
-const ROW_PITCH    = 30;
+const ROW_PITCH    = 38;   // vertical gap between folds; raised with FONT_BASE for legibility
+const FONT_BASE    = 16;   // glyph size in viewBox units (was 12.5) — bump to read more easily
 const INSET = 14;
 const AMP1  = 3.8,  FREQ1 = 0.034;
 const AMP2  = 1.6,  FREQ2 = 0.011;
@@ -183,13 +206,16 @@ ribbon.setAttribute('d', d);
 ribbon.setAttribute('fill', 'none');
 defs.appendChild(ribbon);
 
-const fontSize = 12.5 / Math.sqrt(TEXT_DENSITY);
+const fontSize = FONT_BASE / Math.sqrt(TEXT_DENSITY);
 const FONT = "'Space Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace";
 const textEl = document.createElementNS(NS, 'text');
 textEl.setAttribute('font-family', FONT);
 textEl.setAttribute('font-size', String(fontSize));
 textEl.setAttribute('letter-spacing', '0.5');
 textEl.setAttribute('fill', 'var(--color-indigo)');
+// Place glyphs at exact sub-pixel positions instead of snapping each to the
+// pixel grid every frame — kills the "skitter" as the text scrolls the path.
+textEl.setAttribute('text-rendering', 'geometricPrecision');
 
 const tp = document.createElementNS(NS, 'textPath');
 tp.setAttribute('href', '#ribbon');
@@ -200,7 +226,44 @@ const segs = makeSegments();
 const tileText = segs.map(s => s.text).join('');
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* ── interaction tunables ───────────────────────────────────
+   BASE_SPEED      idle drift along the ribbon (px/sec)
+   STEER           cursor X nudges the flow faster/backwards
+   GLIDE           how long a fling coasts before resting (0–100)
+   PARALLAX_*      how hard the brain leans toward the cursor
+   PRESS_*         extra lean + scale "pop" while actively grabbing
+   ─────────────────────────────────────────────────────────── */
+const BASE_SPEED     = RIBBON_SPEED;
+const STEER          = true;
+const STEER_STRENGTH = 55;
+const GLIDE          = 55;
+const PARALLAX       = !reduceMotion;
+const PARALLAX_MOVE  = 20;   // px of translate at the edges (was 10)
+const PARALLAX_ROT   = 10;   // deg of 3D rotation at the edges (was 5)
+const PRESS_BOOST    = 1.8;  // tilt multiplier while grabbing
+const PRESS_SCALE    = 0.04; // scale pop while grabbing
+const DRAG_GAIN      = 1.4;  // how strongly a drag scrubs the ribbon
+const FLING_CLAMP    = 2400; // max momentum handed off on release
+
 document.fonts.ready.then(() => {
+  const stage = document.querySelector('.stage') as HTMLElement;
+
+  // The component lives in a `hidden lg:block` container, so on smaller
+  // viewports the stage has zero width and text measures 0 — which would
+  // blow `reps` up into hundreds of thousands of tspans. Defer the build
+  // until the stage is actually laid out, then run exactly once.
+  let started = false;
+  function start() {
+    if (started || stage.getBoundingClientRect().width === 0) return;
+    started = true;
+    build();
+  }
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(() => { start(); if (started) ro.disconnect(); });
+    ro.observe(stage);
+  }
+
+  function build() {
   const pathLen = (ribbon as SVGPathElement).getTotalLength();
 
   const probe = document.createElementNS(NS, 'text');
@@ -229,13 +292,115 @@ document.fonts.ready.then(() => {
     return;
   }
 
-  let offset = 0, last = performance.now();
+  /* ══ interactive physics ══════════════════════════════════
+     The ribbon's position along the path is one scalar, `offset`.
+     Velocity eases toward base drift + cursor "current". Dragging
+     scrubs offset directly and, on release, hands its measured
+     speed back as momentum that glides to rest. */
+  let offset   = tileLen * 0.4;
+  let velocity = BASE_SPEED;
+
+  const outline = document.getElementById('outline') as SVGPathElement;
+
+  let dragging = false, lastX = 0, lastT = 0, measuredVel = 0;
+  let nx = 0, ny = 0, overStage = false;   // cursor, normalized −1..1
+  let px = 0, py = 0, press = 0;            // eased parallax + grab state
+  let glow = 0;                            // eased cursor-proximity highlight
+
+  const scaleNow = () => 960 / stage.getBoundingClientRect().width;
+  const friction = () => 12 * Math.pow(0.05, GLIDE / 100);
+
+  function readCursor(e: PointerEvent) {
+    const r = stage.getBoundingClientRect();
+    nx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2)));
+    ny = Math.max(-1, Math.min(1, (e.clientY - (r.top  + r.height / 2)) / (r.height / 2)));
+  }
+
+  stage.addEventListener('pointerdown', e => {
+    e.preventDefault();                       // no text selection / drag-image
+    dragging = true; overStage = true;
+    stage.classList.add('dragging');
+    stage.setPointerCapture?.(e.pointerId);
+    lastX = e.clientX; lastT = performance.now(); measuredVel = 0;
+    readCursor(e);
+  });
+
+  stage.addEventListener('pointermove', e => {
+    overStage = true;
+    readCursor(e);
+    if (!dragging) return;
+    const now = performance.now();
+    const dt  = Math.max((now - lastT) / 1000, 0.001);
+    const dOff = -(e.clientX - lastX) * scaleNow() * DRAG_GAIN;
+    offset += dOff;
+    measuredVel = measuredVel * 0.6 + (dOff / dt) * 0.4;   // EMA → momentum
+    lastX = e.clientX; lastT = now;
+  });
+
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    stage.classList.remove('dragging');
+    velocity = Math.max(-FLING_CLAMP, Math.min(FLING_CLAMP, measuredVel));
+  }
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+  stage.addEventListener('pointerleave', () => {
+    overStage = false;
+    if (!dragging) { nx = 0; ny = 0; }
+  });
+
+  /* double-click flings the ribbon — a little playful spin */
+  stage.addEventListener('dblclick', () => { velocity = 1100; });
+
+  let last = performance.now();
   (function frame(now: number) {
     const dt = Math.min((now - last) / 1000, 0.05);
     last = now;
-    offset = (offset + RIBBON_SPEED * dt) % tileLen;
+
+    if (!dragging) {
+      let target = BASE_SPEED;
+      if (STEER && overStage) target += STEER_STRENGTH * nx;
+      velocity = target + (velocity - target) * Math.exp(-friction() * dt);
+      offset  += velocity * dt;
+    }
+
+    offset = ((offset % tileLen) + tileLen) % tileLen;
     tp.setAttribute('startOffset', (-offset).toFixed(2));
+
+    /* parallax tilt — the brain leans toward the cursor, amplified
+       while grabbing for a dramatic, playful response */
+    const tnx = (PARALLAX && overStage) ? nx : 0;
+    const tny = (PARALLAX && overStage) ? ny : 0;
+    px    += (tnx - px) * Math.min(1, dt * 6);
+    py    += (tny - py) * Math.min(1, dt * 6);
+    press += ((dragging ? 1 : 0) - press) * Math.min(1, dt * 8);
+    const boost = 1 + (PRESS_BOOST - 1) * press;
+    stage.style.transform =
+      `translate(${(-px * PARALLAX_MOVE * boost).toFixed(2)}px, ${(-py * PARALLAX_MOVE * 0.8 * boost).toFixed(2)}px) ` +
+      `rotateY(${(px * PARALLAX_ROT * boost).toFixed(2)}deg) rotateX(${(-py * PARALLAX_ROT * boost).toFixed(2)}deg) ` +
+      `scale(${(1 + PRESS_SCALE * press).toFixed(3)})`;
+
+    /* cursor-proximity glow — the outline brightens and thickens as the
+       cursor nears the brain (strongest at center), hinting "grab me".
+       A press deepens it further. */
+    const dist   = Math.min(1, Math.hypot(nx, ny));
+    const target = PARALLAX ? (overStage ? Math.max(press, 1 - dist * 0.7) : 0) : 0;
+    glow += (target - glow) * Math.min(1, dt * 7);
+    if (glow > 0.005) {
+      outline.setAttribute('stroke-width', (2.5 + glow * 1.5).toFixed(2));
+      outline.setAttribute('stroke-opacity', (0.28 + glow * 0.34).toFixed(3));
+      outline.style.filter = `drop-shadow(0 0 ${(glow * 7).toFixed(1)}px rgba(192,106,44,${(glow * 0.45).toFixed(2)}))`;
+    } else {
+      outline.setAttribute('stroke-width', '2.5');
+      outline.setAttribute('stroke-opacity', '0.28');
+      outline.style.filter = 'none';
+    }
+
     requestAnimationFrame(frame);
   })(last);
+  }
+
+  start();
 });
 </script>
