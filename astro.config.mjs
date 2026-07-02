@@ -3,10 +3,13 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
   site: 'https://sloanthomas.com',
+
   fonts: [
     {
       name: 'Fraunces',
@@ -24,7 +27,10 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
     },
   ],
+
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  integrations: [sitemap()]
 });

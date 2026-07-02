@@ -1,0 +1,18 @@
+# Thomas Sloan
+
+> Freelance marketing consultant for B2B SaaS founders and marketing leaders ($3M–$20M ARR), applying behavioral science and signaling theory to marketing strategy. Core thesis: marketing failure is usually judgment-avoidance, not an execution problem. Rigor is not a strategy.
+
+## Services
+
+- [Services](https://sloanthomas.com/services): Three engagement types. The Diagnostic — a focused audit finding where marketing signals the wrong things, where friction kills conversion, and which strategic calls have been quietly avoided; for founders/leaders who sense something's off but can't name it. The Behavioral Architecture Sprint — rebuilds funnel logic and lifecycle flows around how customers actually decide, not how funnel diagrams assume; for teams with a signup-to-activation or trial-to-paid gap they can't explain from the data alone. Strategic Advisory — ongoing thought partnership that pressure-tests plans and pushes toward high-leverage, politically uncomfortable calls; for leaders mid-repositioning or pivot who want a sharp voice willing to push back.
+
+## Essays
+
+- [Honesty as a Marketing Strategy](https://sloanthomas.com/writing/honesty): Marketing fails because most teams aren't honest about the market, themselves, and office politics — radical honesty about product, position, performance, and people is the actual precondition for taking the calculated risks marketing requires.
+- [Data Is Killing Your Marketing](https://sloanthomas.com/writing/data): Over-reliance on data to inform marketing decisions has produced inaccurate, uninspired results by displacing craft and judgment with false certainty; measurement should serve the work, not replace the thinking behind it.
+- [How to Signal in 2026](https://sloanthomas.com/writing/signals): Signaling theory — the idea that costly, hard-to-fake actions communicate quality more reliably than claims — is marketing's most important and most misapplied concept, and using it correctly changes what's worth spending on.
+
+## Optional
+
+- [Work](https://sloanthomas.com/work): Case studies and side projects.
+- [About](https://sloanthomas.com/about): Background on Thomas Sloan.
