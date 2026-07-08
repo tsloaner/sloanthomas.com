@@ -3,6 +3,12 @@ title: "Honesty as a Marketing Strategy"
 summary: "Marketing fails because most teams aren't honest about the market, themselves, and office politics. Confront each to be the most effective team."
 date: 2026-01-15
 draft: false
+tldr: >-
+  Marketing is messy because humans are messy. Companies cope by avoiding the honest,
+  high-leverage decisions in favor of safe, low-impact busywork. The strategic moves that matter
+  — admitting a weak offer, naming what marketing is being asked to do — are the ones
+  organizations fight the hardest to avoid. Radical honesty about your product, position, and
+  politics is the most powerful and least-used intervention available to any marketing team.
 ---
 
 ## Marketing is Messy

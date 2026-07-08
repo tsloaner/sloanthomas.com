@@ -3,6 +3,12 @@ title: "Data Is Killing Your Marketing"
 summary: "Over-reliance on data to inform marketing has created inaccurate, uninspired results. Let's return to the craft."
 date: 2026-04-13
 draft: false
+tldr: >-
+  Digital marketing gave us the ability to measure everything, and we've mistaken that for
+  understanding. Over-reliance on data flattens the humanity that drives decisions, rewards safe
+  and undifferentiated work, and incentivizes long-term brand damage. The fix isn't abandoning
+  data — it's demoting it from judge to lens, and returning to taste, conviction, and long-term
+  brand craft.
 ---
 
 Digital marketing gave us something we'd never had: the ability to track results. This was a godsend for marketers. The more you could test, the faster you improved. Instead of relying on hope and vibes, you could *prove* your impact with the numbers. This gave marketers more credibility and power, but at a cost.

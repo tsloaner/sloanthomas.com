@@ -7,6 +7,7 @@ interface Props {
   frontmatter: {
     title: string;
     summary: string;
+    tldr?: string;
   };
 }
 
@@ -36,6 +37,19 @@ const { frontmatter } = Astro.props;
           </h1>
         </div>
       </ScrollFadeIn>
+
+      {frontmatter.tldr && (
+        <ScrollFadeIn delay={100}>
+          <div class="max-w-[750px] mx-auto mb-16 rounded-lg bg-linen/60 ring-1 ring-inset ring-slate-blue/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] p-6 md:p-8">
+            <p class="font-mono text-[13px] uppercase tracking-widest text-orange mb-3">
+              TL;DR
+            </p>
+            <p class="font-body text-[17px] text-slate-blue leading-relaxed">
+              {frontmatter.tldr}
+            </p>
+          </div>
+        </ScrollFadeIn>
+      )}
 
       <div
         id="article-body"

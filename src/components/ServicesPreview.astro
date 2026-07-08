@@ -1,6 +1,7 @@
 ---
 import ServiceCard from "./ServiceCard.astro";
 import ScrollFadeIn from "./ScrollFadeIn.astro";
+import HowItWorksTeaser from "./HowItWorksTeaser.astro";
 
 const services = [
   {
@@ -20,7 +21,7 @@ const services = [
   {
     name: "Strategic Advisory",
     description:
-      "An independent thought partner for leaders who need someone in the room who isn't trying to stay in the room. I'll poke holes in your plan, call out biases, and keep you honest about what your audience responds to.",
+      "An independent thought partner for leaders who need someone in the room who isn't trying to stay in the room. I pressure-test your strategy before the market does, name the assumption your plan depends on, and hold the line on long-term brand decisions when short-term metrics tempt you off it.",
     href: "/services",
     delay: 200 as const,
   },
@@ -45,5 +46,7 @@ const services = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {services.map((svc) => <ServiceCard {...svc} />)}
     </div>
+
+    <HowItWorksTeaser />
   </div>
 </section>

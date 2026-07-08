@@ -3,6 +3,12 @@ title: "How to Signal in 2026"
 summary: "Signaling is the most important, yet misunderstood and misapplied concept in social psychology. Here's how to do it right."
 date: 2026-04-06
 draft: false
+tldr: >-
+  Marketers think they're in the messaging business, but they're actually in the signaling
+  business. Your audience judges you less by what you say than by what it costs you to say it.
+  In an era where AI makes content nearly free, production quality is a dead signal, and the rare
+  honest ones (admitting flaws, breaking category conventions, subtle in-group cues) are what
+  earn trust. The most valuable thing you can signal now is that an actual human gave a damn.
 ---
 
 A cheetah stalks through the tall savannah grass, approaching a herd of gazelles. A misplaced step snaps a twig, alerting its would-be prey. They bolt in different directions, eager to get a head start on the world's fastest land animal.
