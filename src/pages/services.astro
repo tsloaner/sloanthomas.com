@@ -1,47 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ScrollFadeIn from '../components/ScrollFadeIn.astro';
+import HowItWorks from '../components/HowItWorks.astro';
 import BottomCTA from '../components/BottomCTA.astro';
 
 const services = [
   {
     number: "01",
     name: "The Diagnostic",
-    tagline: "Find what's quietly costing you customers.",
-    idealFor: "B2B SaaS founders and marketing leaders who sense something is off but can't name it. Companies with real traction but stalled activation or retention.",
-    description: "A focused examination of where your marketing is signaling the wrong things, where friction is killing conversion, and which strategic choices have been quietly avoided. I work from how people actually make decisions — not how funnel diagrams assume they do. You'll get a prioritized blueprint with specific findings, sequenced recommendations, and enough detail that you or your team can act on it immediately.",
-    includes: [
-      "End-to-end journey walkthrough",
-      "Heuristic friction analysis",
-      "Prioritized matrix of recommended fixes",
-      "1-hour presentation and handover"
-    ],
+    tagline: "Find out why growth stalled — in three weeks, not three quarters.",
+    idealFor: "SaaS companies with real traction whose activation, conversion, or retention numbers have flattened — and whose team's only answer is “run more tests.”",
+    description: "<p>I examine your positioning, funnel, and lifecycle against how buyers actually make decisions, not how your attribution model assumes they do. You get a written <strong class=\"font-semibold text-indigo\">Decision-Path Diagnosis</strong>: your 3–5 highest-leverage problems, the behavioral reason behind each, and a sequenced 90-day plan specific enough that your team can execute it without me. Fixed fee, fixed timeline, yours to keep.</p>",
   },
   {
     number: "02",
     name: "Behavioral Architecture Sprint",
-    tagline: "Build the system that reflects how your customers actually decide.",
-    idealFor: "Companies with a clear gap between signups and activated customers, or between trial and paid. Teams who have the data but don't know why it isn't converting.",
-    description: "Now that you know what's broken, let's fix it. I build the system — funnel logic, lifecycle flows, activations — inside your existing tools, grounded in how your customers actually think and decide. Most funnels are mathematically sound but psychologically broken. I rebuild the parts that are costing you customers, hand you the keys, and document everything so your team can run it.",
-    includes: [
-      "In-depth qualitative review",
-      "Messaging and positioning check",
-      "Competitive anchor evaluation",
-      "Actionable diagnostic report"
-    ],
+    tagline: "Close the gap between signups and paying customers.",
+    idealFor: "Teams whose funnel is mathematically sound but psychologically broken — signups that never activate, trials that never convert, and dashboards that can't explain why.",
+    description: "<p>I rebuild the decision path — onboarding flows, lifecycle messaging, pricing-page logic — inside your existing tools, grounded in how your specific customers evaluate and choose. You get a working system, full documentation, and the keys.</p><p><em>Metrics we build toward:</em> activation rate, trial-to-paid conversion, and net revenue retention — the numbers you already report, measured over quarters, not days.</p><p>I'm not a short-term growth hacker. The Sprint delivers a working system in weeks; the results compound over quarters, because brand and lifecycle work stacks rather than spikes.</p>",
   },
   {
     number: "03",
     name: "Strategic Advisory",
-    tagline: "A sharp voice in the room who isn't afraid to push back.",
-    idealFor: "Companies in the middle of a repositioning, a strategic pivot, or a hard call about where to invest. Leaders who want someone in their corner who isn't afraid to push back.",
-    description: "An ongoing thought partnership for founders and marketing leaders making hard strategic calls who want someone sharp in the room who isn't trying to stay in the room. I'll poke holes in your plan, call out lazy thinking, push you toward high-leverage work, and keep you honest about what your audience responds to. Helping you make the calls everybody else considers too politically risky.",
-    includes: [
-      "Stakeholder interviews",
-      "Current-state strategy mapping",
-      "Constraint identification",
-      "Roadmap for high-leverage activities"
-    ],
+    tagline: "Independent judgment for the calls you can't outsource.",
+    idealFor: "Founders mid-repositioning, mid-pivot, or facing an expensive bet — who have plenty of opinions around them and no one whose incentives are clean.",
+    description: "<p>An ongoing partnership with someone who isn't trying to stay in the room. I pressure-test your strategy before the market does, name the assumption your plan depends on, and hold the line on long-term brand decisions when short-term metrics tempt you off it. You make sharper calls, faster, with fewer expensive reversals.</p>",
   }
 ];
 ---
@@ -53,10 +36,13 @@ const services = [
         <h1 class="text-indigo mb-8">
           Services
         </h1>
-        <p class="font-body text-[18px] md:text-[20px] text-slate-blue max-w-[700px] leading-relaxed mb-24">
-          Most marketing doesn't fail from bad execution, it fails from avoiding judgment about how you become distinctive, what you're signaling to your audience, and what to focus on. I help founders and marketing leaders make those calls, build the systems that reflect them, and keep them accountable when it gets uncomfortable.
+        <p class="font-body text-[18px] md:text-[20px] text-slate-blue max-w-[700px] leading-relaxed mb-16">
+          Most stalled marketing isn't an execution problem. It's an avoided decision — about how you become distinctive, what you're signaling to your buyers, and what to stop doing. I work with B2B SaaS founders and marketing leaders (roughly Series A–C, $1M–$30M) who suspect their marketing could be fundamentally better, not just further optimized.
         </p>
       </ScrollFadeIn>
+
+      <!-- How This Works -->
+      <HowItWorks />
 
       <!-- Accordion Services -->
       <div id="services-accordion" class="border-t border-slate-blue/15">
@@ -103,9 +89,10 @@ const services = [
               >
                 <div class="overflow-hidden min-h-0">
                   <div class="pb-10 pl-[calc(2rem+1.5625rem)] md:pl-[calc(2.5rem+1.5625rem)]">
-                    <p class="font-body text-lg text-slate-blue leading-relaxed mb-8 max-w-[680px]">
-                      {svc.description}
-                    </p>
+                    <div
+                      class="font-body text-lg text-slate-blue leading-relaxed mb-8 max-w-[680px] [&>p]:mb-4 [&>p:last-child]:mb-0"
+                      set:html={svc.description}
+                    />
 
                     <a
                       href="/contact"
@@ -120,6 +107,18 @@ const services = [
           </ScrollFadeIn>
         ))}
       </div>
+
+      <!-- Pricing -->
+      <ScrollFadeIn delay={0}>
+        <div class="mt-20 max-w-[700px]">
+          <h2 class="font-mono text-[13px] uppercase tracking-[0.05em] text-slate-blue opacity-80 mb-4">
+            How Pricing Works
+          </h2>
+          <p class="font-body text-[18px] md:text-[20px] text-slate-blue leading-relaxed">
+            Every engagement is fixed-fee and quoted after the intro call — no hourly meters, no scope creep. Founding-client pricing is in effect through 2026.
+          </p>
+        </div>
+      </ScrollFadeIn>
     </div>
   </div>
 

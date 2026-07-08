@@ -1,0 +1,167 @@
+---
+// Full "How This Works" journey for the Services page.
+// A process map (not a restatement of the offerings below): a connected
+// timeline with commitment/time at each stage, branching at step 03 into
+// the two ongoing services and linking down into their accordion entries.
+const steps = [
+  {
+    number: "01",
+    label: "A free intro call",
+    tag: "Free · 30 min",
+    body: "We pressure-test whether your problem is one I can actually help with. If it isn't, I'll tell you.",
+    cta: { href: "/contact", text: "Book an intro call" },
+  },
+  {
+    number: "02",
+    label: "Written diagnostic report",
+    tag: "2–3 weeks · fixed fee",
+    body: "A written diagnosis of your highest-leverage problems and a sequenced 90-day plan — specific enough that your team can run it without me.",
+  },
+  {
+    number: "03",
+    label: "Build or advise",
+    tag: "Ongoing",
+    body: "Depending on the gap, the relationship continues as a Sprint or Advisory.",
+  },
+];
+---
+
+<section class="mb-24 pt-16 border-t border-slate-blue/15" aria-labelledby="how-it-works-heading">
+  <h2
+    id="how-it-works-heading"
+    class="font-mono text-[13px] uppercase tracking-[0.05em] text-slate-blue opacity-80 mb-4"
+  >
+    How This Works
+  </h2>
+  <p class="font-body text-[18px] md:text-[20px] text-slate-blue max-w-[700px] leading-relaxed mb-14">
+    Every engagement starts with a diagnosis. I don't prescribe before I understand the problem.
+  </p>
+
+  <ol class="journey flex flex-col md:flex-row md:gap-0" role="list">
+    {steps.map((step, i) => (
+      <li class={`journey-node relative flex md:flex-col gap-5 md:gap-0 md:flex-1 ${i < steps.length - 1 ? "pb-2 md:pb-0 md:pr-8" : ""}`}>
+        <!-- Marker rail: marker + (mobile) vertical connector -->
+        <div class="flex flex-col items-center md:items-start shrink-0">
+          <span class={`marker relative z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-linen ring-1 ring-inset font-mono text-[12px] tracking-wider ${i === 0 ? "ring-orange/50 text-orange" : "ring-slate-blue/25 text-indigo"}`}>
+            {step.number}
+          </span>
+          {i < steps.length - 1 && (
+            <span class="conn conn-v md:hidden relative w-px flex-1 mt-2 bg-slate-blue/20" aria-hidden="true">
+              <span class="conn-fill absolute inset-0 bg-orange"></span>
+            </span>
+          )}
+        </div>
+
+        <!-- Desktop horizontal connector -->
+        {i < steps.length - 1 && (
+          <span class="conn conn-h hidden md:block absolute left-10 right-0 top-5 h-px bg-slate-blue/20" aria-hidden="true">
+            <span class="conn-fill absolute inset-0 bg-orange"></span>
+          </span>
+        )}
+
+        <!-- Content -->
+        <div class="flex-1 min-w-0 md:mt-6">
+          <span class="inline-flex items-center font-mono text-[11px] uppercase tracking-wide text-slate-blue/70 ring-1 ring-inset ring-slate-blue/15 bg-linen/60 rounded-full px-2.5 py-1 mb-3">
+            {step.tag}
+          </span>
+          <h3 class="font-display font-semibold text-[1.25rem] md:text-[1.375rem] text-indigo leading-snug mb-2">
+            {step.label}
+          </h3>
+          <p class="font-body text-[15px] text-slate-blue leading-relaxed max-w-[34ch]">
+            {step.body}
+          </p>
+
+          {step.cta && (
+            <a
+              href={step.cta.href}
+              class="group inline-flex items-center text-orange font-mono text-[13px] uppercase tracking-widest hover:text-orange/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded-sm w-max mt-4"
+            >
+              {step.cta.text}
+              <svg class="w-4 h-4 mt-[1px] ml-1 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          )}
+
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  /* Entrance: nodes stagger up, orange line draws along the path.
+     Transform/opacity only; triggered by .is-visible from the observer below. */
+  .journey-node {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .journey.is-visible .journey-node {
+    opacity: 1;
+    transform: none;
+  }
+  .journey.is-visible .journey-node:nth-child(2) { transition-delay: 90ms; }
+  .journey.is-visible .journey-node:nth-child(3) { transition-delay: 180ms; }
+
+  .conn-fill {
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .conn-h .conn-fill {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  .conn-v .conn-fill {
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+  .journey.is-visible .conn-h .conn-fill { transform: scaleX(1); }
+  .journey.is-visible .conn-v .conn-fill { transform: scaleY(1); }
+  .journey.is-visible .journey-node:nth-child(1) .conn-fill { transition-delay: 140ms; }
+  .journey.is-visible .journey-node:nth-child(2) .conn-fill { transition-delay: 230ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .journey-node {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .conn-fill {
+      transform: none !important;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function initJourney() {
+    const el = document.querySelector(".journey");
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.classList.add("is-visible");
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            el.classList.add("is-visible");
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(el);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initJourney);
+  } else {
+    initJourney();
+  }
+</script>
