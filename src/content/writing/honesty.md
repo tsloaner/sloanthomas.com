@@ -200,7 +200,7 @@ This stuff is hard. Life is hard, work is hard, marketing is hard. It's not enou
 
 We cope with the difficulty by avoiding the truly difficult, costly work and doing feel-good, low-impact work. We avoid honesty with ourselves and others. We tell ourselves how good our ideas are and we don't dare criticize the plan or our superiors. We're all happy to exist inside the story we've created, whether fiction or factual.
 
-The teams that win are the ones that will look at their situation honestly, make a call with incomplete information but trust in their judgement, and commit to it long enough for it to work. They also acknowledge the messy realities of the system they operate in.
+The teams that win are the ones that will look at their situation honestly, make a call with incomplete information but trust in their judgment, and commit to it long enough for it to work. They also acknowledge the messy realities of the system they operate in.
 
 This all requires courage. To do more work, to trust in yourselves, and be unpopular. The frameworks in this piece are just a way of making that courage easier to summon. I hope you have the courage to use honesty as your new marketing strategy.
 
