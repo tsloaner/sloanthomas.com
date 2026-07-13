@@ -9,7 +9,7 @@
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-dasharray: 20 150;
-        animation: suckIntoPrism 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        animation: suckIntoPrism 10s var(--ease-draw) infinite;
       }
       
       .ray1 { stroke: #142e52; stroke-width: 3; }
@@ -32,7 +32,7 @@
         stroke: #f28f2c;
         stroke-linecap: round;
         stroke-dasharray: 100 200;
-        animation: shootBeam 10s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+        animation: shootBeam 10s var(--ease-pop) infinite;
       }
       
       .beam-core { stroke-width: 5; opacity: 1; }
@@ -57,6 +57,13 @@
         40% { stroke-dashoffset: 100; opacity: 1; }
         43%, 75% { stroke-dashoffset: 0; opacity: 1; }
         80%, 100% { stroke-dashoffset: 0; opacity: 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        /* Poster frame: the decision has been made — beam lit, inputs absorbed */
+        .input-ray { animation: none; opacity: 0; }
+        .prism-face { animation: none; stroke: #f28f2c; }
+        .beam-line { animation: none; stroke-dashoffset: 0; opacity: 1; }
       }
     </style>
 

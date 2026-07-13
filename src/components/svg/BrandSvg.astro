@@ -3,7 +3,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
   <style>
     /* Minimalist Apple-esque Styling */
-    .bg { fill: #e6e5d8; }
+    .bg { fill: #e6e5db; }
     
     .grid-line {
       stroke: #142e52;
@@ -19,37 +19,62 @@
       /* Using pathLength="100" in markup normalizes lengths to exactly 100 */
       stroke-dasharray: 100;
       stroke-dashoffset: 100;
-      animation: draw-line 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
-    /* Orange Brand Arc - Smooth */
+    /* Orange Brand Arc - Smooth, patient, lingers after the tactics vanish */
     .brand-arc {
       stroke: #f28f2c;
       stroke-width: 6;
+      animation:
+        draw-arc 8s var(--ease-draw) infinite,
+        exit-arc 8s linear infinite;
     }
 
-    /* Blue Tactics Chaos - Sharp & Sporadic */
+    /* Blue Tactics Chaos - draws in stop-start bursts, vanishes abruptly */
     .tactics-chaos {
       stroke: #142e52;
       stroke-width: 4;
-    }
-
-    /* Master Fade Group to ensure perfectly synced loop out */
-    .sync-loop {
-      animation: fade-out 8s linear infinite;
+      animation:
+        draw-tactics 8s var(--ease-draw) infinite,
+        exit-tactics 8s linear infinite;
+      /* Browsers without linear() drop this declaration and keep the
+         smooth curve from the shorthand above — same finish time either way */
+      animation-timing-function:
+        linear(0, 0.12 14%, 0.14 26%, 0.38 34%, 0.41 52%, 0.68 60%, 0.71 78%, 1),
+        linear;
     }
 
     /* Keyframes */
-    @keyframes draw-line {
+    /* Tactics rush ahead and finish first… */
+    @keyframes draw-tactics {
       0%, 10% { stroke-dashoffset: 100; }
-      /* Both finish drawing at the exact same time */
-      75%, 100% { stroke-dashoffset: 0; }
+      60%, 100% { stroke-dashoffset: 0; }
     }
 
-    @keyframes fade-out {
-      0%, 80% { opacity: 1; }
-      /* Smoothly fade to invisible before the loop restarts */
-      92%, 100% { opacity: 0; }
+    /* …the brand arc starts later and is still climbing after they're gone */
+    @keyframes draw-arc {
+      0%, 12% { stroke-dashoffset: 100; }
+      80%, 100% { stroke-dashoffset: 0; }
+    }
+
+    /* "Broken quickly": tactics evaporate soon after they peak */
+    @keyframes exit-tactics {
+      0%, 68% { opacity: 1; }
+      73%, 100% { opacity: 0; }
+    }
+
+    /* "Built slowly": the brand line arrives last and persists longest */
+    @keyframes exit-arc {
+      0%, 85% { opacity: 1; }
+      97%, 100% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .brand-arc,
+      .tactics-chaos {
+        animation: none;
+        stroke-dashoffset: 0; /* poster frame: chart fully drawn */
+      }
     }
   </style>
 
@@ -64,12 +89,12 @@
 
   <path d="M 80 80 L 80 320 L 720 320" fill="none" stroke="#142e52" stroke-width="2" opacity="0.3" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <g class="sync-loop">
-    
+  <g>
+
     <path class="animated-path tactics-chaos" pathLength="100" d="M 80 320 L 120 280 L 150 300 L 180 240 L 220 270 L 260 180 L 300 220 L 350 120 L 400 180 L 450 80 L 490 150 L 530 60 L 570 160 L 610 120 L 660 260 L 690 240 L 720 320" />
-    
+
     <path class="animated-path brand-arc" pathLength="100" d="M 80 320 C 250 320, 500 180, 720 80" />
-    
+
   </g>
 
 </svg>
