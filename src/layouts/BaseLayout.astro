@@ -13,6 +13,35 @@ const {
   title = "Thomas Sloan - Behavioral Architect",
   description = "I use behavioral science to find and fix the friction your analytics miss.",
 } = Astro.props;
+
+const siteSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://sloanthomas.com/#person",
+      name: "Thomas Sloan",
+      url: "https://sloanthomas.com",
+      image: "https://sloanthomas.com/Hedcut.png",
+      jobTitle: "Marketing Consultant",
+      description:
+        "Freelance marketing consultant for B2B SaaS, applying behavioral science and signaling theory to marketing strategy.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Boulder",
+        addressRegion: "CO",
+        addressCountry: "US",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sloanthomas.com/#website",
+      url: "https://sloanthomas.com",
+      name: "Thomas Sloan",
+      publisher: { "@id": "https://sloanthomas.com/#person" },
+    },
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -22,6 +51,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
@@ -44,6 +74,9 @@ const {
     <Font cssVariable="--font-display" preload />
     <Font cssVariable="--font-body" preload />
     <Font cssVariable="--font-mono" preload />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
 
     <!-- Analytics -->
     <script

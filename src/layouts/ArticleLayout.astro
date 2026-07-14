@@ -7,14 +7,33 @@ interface Props {
   frontmatter: {
     title: string;
     summary: string;
+    date?: Date;
     tldr?: string;
   };
 }
 
 const { frontmatter } = Astro.props;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: frontmatter.title,
+  description: frontmatter.summary,
+  ...(frontmatter.date && {
+    datePublished: frontmatter.date.toISOString(),
+  }),
+  author: { "@id": "https://sloanthomas.com/#person" },
+  publisher: { "@id": "https://sloanthomas.com/#person" },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": new URL(Astro.url.pathname, Astro.site).href,
+  },
+  image: "https://sloanthomas.com/website-card.jpg",
+};
 ---
 
 <BaseLayout title={`${frontmatter.title} — Thomas Sloan`} description={frontmatter.summary}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <!-- Reading progress bar — sits flush at the bottom edge of the fixed nav (top-28 = 7rem = 112px) -->
   <div
     id="reading-progress"
