@@ -1,0 +1,81 @@
+---
+/**
+ * Click-to-load Mux video. Only a poster image ships with the page; the Mux
+ * player (and the stream) load when the reader presses play.
+ */
+interface Props {
+  playbackId: string;
+  title: string;
+  posterTime?: number;
+}
+
+const { playbackId, title, posterTime } = Astro.props;
+const poster = (width: number) =>
+  `https://image.mux.com/${playbackId}/thumbnail.webp?width=${width}` +
+  (posterTime !== undefined ? `&time=${posterTime}` : '');
+---
+
+<div
+  class="essay-video relative aspect-video overflow-hidden rounded-lg bg-indigo ring-1 ring-slate-blue/10 shadow-[0_8px_30px_-12px_rgba(30,40,70,0.35)]"
+  data-playback-id={playbackId}
+  data-title={title}
+  data-poster-time={posterTime}
+>
+  <button
+    type="button"
+    class="group absolute inset-0 w-full h-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded-lg"
+    aria-label={`Play video: ${title}`}
+  >
+    <img
+      src={poster(1500)}
+      srcset={`${poster(750)} 750w, ${poster(1500)} 1500w`}
+      sizes="(min-width: 800px) 750px, 100vw"
+      alt=""
+      width="1500"
+      height="844"
+      loading="eager"
+      decoding="async"
+      class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+    />
+    <span class="absolute inset-0 bg-indigo/10 transition-colors duration-300 group-hover:bg-indigo/0"></span>
+    <span
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-orange text-linen shadow-lg transition-transform duration-300 ease-[var(--ease-pop)] group-hover:scale-105 group-active:scale-95"
+    >
+      <svg viewBox="0 0 24 24" class="w-7 h-7 md:w-8 md:h-8 ml-1" fill="currentColor" aria-hidden="true">
+        <path d="M7 4.5v15a1 1 0 0 0 1.52.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z" />
+      </svg>
+    </span>
+  </button>
+</div>
+
+<script>
+  const loadPlayer = () => import('@mux/mux-player');
+
+  document.querySelectorAll<HTMLElement>('.essay-video').forEach((wrapper) => {
+    const button = wrapper.querySelector('button');
+    if (!button) return;
+
+    // Start fetching the player as soon as the reader shows intent
+    button.addEventListener('pointerenter', loadPlayer, { once: true });
+    button.addEventListener('focus', loadPlayer, { once: true });
+
+    button.addEventListener(
+      'click',
+      async () => {
+        await loadPlayer();
+        const player = document.createElement('mux-player');
+        player.setAttribute('playback-id', wrapper.dataset.playbackId!);
+        player.setAttribute('stream-type', 'on-demand');
+        player.setAttribute('metadata-video-title', wrapper.dataset.title!);
+        player.setAttribute('accent-color', 'oklch(0.71 0.159 59.816)');
+        player.setAttribute('autoplay', '');
+        if (wrapper.dataset.posterTime) {
+          player.setAttribute('thumbnail-time', wrapper.dataset.posterTime);
+        }
+        player.className = 'absolute inset-0 w-full h-full';
+        button.replaceWith(player);
+      },
+      { once: true }
+    );
+  });
+</script>

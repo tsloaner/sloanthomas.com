@@ -3,6 +3,10 @@ title: "Data Is Killing Your Marketing"
 summary: "Over-reliance on data to inform marketing has created inaccurate, uninspired results. Let's return to the craft."
 date: 2026-04-13
 draft: false
+video:
+  playbackId: "pRBZLoTsuCqWumrPcTSGq01uRTaDP4yUkrVUWUODahMI"
+  duration: "PT4M23S"
+  posterTime: 154
 tldr: >-
   Digital marketing gave us the ability to measure everything, and we've mistaken that for
   understanding. Over-reliance on data flattens the humanity that drives decisions, rewards safe

@@ -3,6 +3,10 @@ title: "How to Signal in 2026"
 summary: "Signaling is the most important, yet misunderstood and misapplied concept in social psychology. Here's how to do it right."
 date: 2026-04-06
 draft: false
+video:
+  playbackId: "sYASP00CfKII6pcKmhJ8xmgE0102szO3D7ftO7Fih00WfNk"
+  duration: "PT4M50S"
+  posterTime: 120
 tldr: >-
   Marketers think they're in the messaging business, but they're actually in the signaling
   business. Your audience judges you less by what you say than by what it costs you to say it.
